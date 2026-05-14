@@ -7,7 +7,6 @@ from __future__ import annotations
 from functools import lru_cache
 from typing import Literal
 
-from pydantic import Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -18,13 +17,14 @@ class Settings(BaseSettings):
     nexus_env: Literal["development", "staging", "production"] = "development"
     log_level: str = "INFO"
 
-    # Vector store
+    # Vector store (Qdrant)
     qdrant_url: str = "http://qdrant:6333"
+    qdrant_api_key: str = ""           # Required for Qdrant Cloud; empty for local
     qdrant_collection: str = "nexus_content"
     embedding_model: str = "sentence-transformers/all-MiniLM-L6-v2"
     embedding_dim: int = 384
 
-    # Knowledge graph
+    # Knowledge graph (Neo4j)
     neo4j_uri: str = "bolt://neo4j:7687"
     neo4j_user: str = "neo4j"
     neo4j_password: str = "nexus-dev-password"
@@ -53,6 +53,16 @@ class Settings(BaseSettings):
     enable_explainability: bool = True
     enable_proactive_agent: bool = True
 
+    # TMDB integration (optional — enables real poster/metadata enrichment)
+    tmdb_api_key: str = ""
+
+    # Admin API secret (change in production)
+    nexus_admin_secret: str = "nexus-admin-dev"
+
+    # Demo mode — pre-loads a demo user profile for live demo deployments
+    demo_mode: bool = False
+    demo_user_id: str = "demo-user-nexus"
+
     @property
     def llm_configured(self) -> bool:
         """True if the active provider has the credentials it needs."""
@@ -67,13 +77,3 @@ class Settings(BaseSettings):
 @lru_cache
 def get_settings() -> Settings:
     return Settings()
-
-    # TMDB integration (optional — enables real poster/metadata enrichment)
-    tmdb_api_key: str = ""
-
-    # Admin API secret (change in production)
-    nexus_admin_secret: str = "nexus-admin-dev"
-
-    # Demo mode — pre-loads a demo user profile for live demo deployments
-    demo_mode: bool = False
-    demo_user_id: str = "demo-user-nexus"

@@ -27,8 +27,8 @@ _USER_COLLECTION = "nexus_users"
 
 
 class VectorStore:
-    def __init__(self, url: str, embedding_model: str, dim: int):
-        self._client = AsyncQdrantClient(url=url)
+    def __init__(self, url: str, embedding_model: str, dim: int, api_key: str = ""):
+        self._client = AsyncQdrantClient(url=url, api_key=api_key or None)
         self._encoder = SentenceTransformer(embedding_model)
         self._dim = dim
         # Collection names — overridden per-tenant via get_tenant_vector_store()
@@ -231,6 +231,7 @@ def get_vector_store() -> VectorStore:
         url=s.qdrant_url,
         embedding_model=s.embedding_model,
         dim=s.embedding_dim,
+        api_key=s.qdrant_api_key,
     )
 
 
