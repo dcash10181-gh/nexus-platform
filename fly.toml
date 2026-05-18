@@ -11,8 +11,8 @@ app            = "nexus-platform-api"
 primary_region = "iad"
 
 [build]
-  dockerfile    = "api/Dockerfile"
-  build_target  = ""
+  dockerfile = "api/Dockerfile"
+  build_context = "api"
 
 [env]
   LLM_PROVIDER      = "anthropic"
