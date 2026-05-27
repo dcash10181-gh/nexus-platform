@@ -1,8 +1,5 @@
 """
 NEXUS API — FastAPI application entry point.
-
-Mounts all routers, initialises singleton services on startup,
-and exposes the /health endpoint the Docker healthcheck polls.
 """
 from __future__ import annotations
 
@@ -33,44 +30,42 @@ async def lifespan(app: FastAPI):
     settings = get_settings()
     log.info("nexus.startup", env=settings.nexus_env, llm=settings.llm_provider)
 
-    # Enforce license on every startup
-    license_info = enforce_license()
-    log.info("nexus.license", tier=license_info.tier, licensee=license_info.licensee)
-
-    # Bootstrap a dev API key if none are registered (local / trial mode)
+    enforce_license()
     _bootstrap_dev_key()
 
-    # Warm up services
-    vs = get_vector_store()
-    await vs.ensure_collection()
-    log.info("nexus.vector_store.ready")
+    # Vector store — warn but don't crash
+    try:
+        vs = get_vector_store()
+        await vs.ensure_collection()
+        log.info("nexus.vector_store.ready")
+    except Exception as e:
+        log.warning("nexus.vector_store.unavailable", error=str(e))
 
-    g = get_graph()
-    await g.ensure_schema()
-    log.info("nexus.graph.ready")
+    # Knowledge graph — warn but don't crash
+    # Neo4j takes 60-90s on first boot; API retries per-request
+    try:
+        g = get_graph()
+        await g.ensure_schema()
+        log.info("nexus.graph.ready")
+    except Exception as e:
+        log.warning("nexus.graph.unavailable", error=str(e))
 
     yield
 
     log.info("nexus.shutdown")
-    await g.close()
+    try:
+        await get_graph().close()
+    except Exception:
+        pass
 
 
 app = FastAPI(
     title="NEXUS Platform API",
-    description=(
-        "AI-native video & content orchestration. "
-        "MCP-orchestrated recommendations, conversational discovery, "
-        "multi-modal embeddings, and agentic personalization. "
-        "\n\n**Authentication:** All /v1/* endpoints require "
-        "`Authorization: Bearer <api_key>` or `X-Nexus-Key: <api_key>`."
-    ),
     version="1.0.0",
     lifespan=lifespan,
     docs_url="/docs",
     redoc_url="/redoc",
 )
-
-# ── Middleware ────────────────────────────────────────────────────────────
 
 app.add_middleware(
     CORSMiddleware,
@@ -80,8 +75,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 app.add_middleware(AuthMiddleware)
-
-# ── Routers ───────────────────────────────────────────────────────────────
 
 app.include_router(recommendations.router, prefix="/v1/recommendations", tags=["Recommendations"])
 app.include_router(search.router,          prefix="/v1/search",          tags=["Search"])
@@ -93,7 +86,6 @@ app.include_router(admin.router,           prefix="/v1/admin",           tags=["
 app.include_router(live_router.router,     prefix="/v1/live",            tags=["Live AI"])
 app.include_router(federated_router,       prefix="/v1/federated",       tags=["Federated"])
 
-# ── Health & Info ─────────────────────────────────────────────────────────
 
 @app.get("/health", include_in_schema=False)
 async def health():
@@ -105,15 +97,8 @@ async def root():
     s = get_settings()
     from utils.licensing import get_license
     lic = get_license()
-    return {
-        "platform": "NEXUS",
-        "version": "1.0.0",
-        "env": s.nexus_env,
-        "llm": s.llm_provider,
-        "license": lic.tier,
-        "licensee": lic.licensee,
-        "docs": "/docs",
-    }
+    return {"platform": "NEXUS", "version": "1.0.0", "env": s.nexus_env,
+            "llm": s.llm_provider, "license": lic.tier, "docs": "/docs"}
 
 
 @app.exception_handler(Exception)
