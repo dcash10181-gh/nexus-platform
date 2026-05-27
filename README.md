@@ -6,38 +6,61 @@
 [![Docker](https://img.shields.io/badge/Deploy-Docker-cyan.svg)](./docker-compose.yml)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-green.svg)](./api)
 [![React 18](https://img.shields.io/badge/React-18-blueviolet.svg)](./frontend)
+[![Tests](https://img.shields.io/badge/Tests-55%2F55-brightgreen.svg)](./api/tests)
 
 ---
 
-## 30-Second Deploy
+## Quick Start
+
+**Requirements:** [Docker Desktop](https://docs.docker.com/get-docker/) — nothing else.
+
+### One-command install
 
 ```bash
-curl -sSL https://get.nexus.ai | bash
-# Then open http://localhost:3000
+curl -sSL https://raw.githubusercontent.com/dcash10181-gh/nexus-platform/main/install.sh | bash
 ```
 
-Or clone and run locally:
+This clones the repo, starts all services, seeds the catalog, and opens the browser. No API keys required.
+
+### Manual install
 
 ```bash
-git clone https://github.com/duanecash/nexus-platform
+git clone https://github.com/dcash10181-gh/nexus-platform
 cd nexus-platform
-cp .env.example .env          # add ANTHROPIC_API_KEY for full AI
+cp .env.example .env
 docker compose up -d
 ```
+
+Open **http://localhost:3000**
+
+### To stop
+
+```bash
+docker compose down
+```
+
+### To enable real AI (optional)
+
+Edit `.env`:
+```
+LLM_PROVIDER=anthropic
+ANTHROPIC_API_KEY=sk-ant-...
+```
+Restart: `docker compose up -d`
 
 ---
 
 ## What NEXUS Does
 
-NEXUS is a white-label AI recommendation and content discovery platform for video streaming companies. It ships five capabilities that most streaming platforms do not yet offer their users:
+NEXUS is a white-label AI recommendation and content discovery platform for video streaming companies. Five capabilities most streaming platforms don't offer:
 
 | Capability | Description |
 |-----------|-------------|
-| **Conversational Discovery** | Multi-turn LLM dialogue: "Something like Inception for a rainy evening" → curated results |
+| **Conversational Discovery** | Multi-turn dialogue: "Something like Inception for a rainy evening" → curated results |
 | **Explainable Recommendations** | Per-card signal breakdown: "87% match — pacing, director affinity, completion history" |
 | **Proactive Agentic Push** | Background agent surfaces content before the user opens the app |
-| **Content DNA** | Multi-modal fingerprint: tension curve, pacing score, visual style, audio mood, thematic tags |
-| **Pluggable LLM Intelligence** | Hot-swap Claude / GPT-4o / Llama via `.env` — no code changes required |
+| **Content DNA** | Fingerprint: tension curve, pacing score, visual style, audio mood, thematic tags |
+| **Pluggable LLM Intelligence** | Hot-swap Claude / GPT-4o / Llama via one `.env` change — no code required |
 
 ---
 
@@ -56,32 +79,15 @@ NEXUS is a white-label AI recommendation and content discovery platform for vide
 │                           │ HTTP                              │
 │   ┌─────────────────────────────────────────────────────┐    │
 │   │  FastAPI  :8000                                      │    │
-│   │  ┌───────────┐ ┌──────────┐ ┌──────────────────┐   │    │
-│   │  │  /v1/recs │ │ /v1/chat │ │  /v1/agents      │   │    │
-│   │  └───────────┘ └──────────┘ └──────────────────┘   │    │
-│   │                                                      │    │
-│   │  ┌──────────────────────────────────────────────┐   │    │
-│   │  │  MCP Orchestrator — LLM Layer                │   │    │
-│   │  │  Claude Sonnet │ GPT-4o │ Llama3 │ Mock      │   │    │
-│   │  └──────────────────────────────────────────────┘   │    │
-│   │                                                      │    │
-│   │  ┌──────────────────┐  ┌──────────────────────────┐ │    │
-│   │  │  Recommendation  │  │  LangGraph Proactive      │ │    │
-│   │  │  Engine          │  │  Agent (4-node loop)      │ │    │
-│   │  │  semantic+graph  │  │  gather→retrieve→reason   │ │    │
-│   │  └──────────────────┘  └──────────────────────────┘ │    │
+│   │  MCP Orchestrator — Claude │ GPT-4o │ Llama │ Mock  │    │
+│   │  Recommendation Engine (semantic + graph + context) │    │
+│   │  LangGraph Proactive Agent (4-node pipeline)        │    │
 │   └─────────────────────────────────────────────────────┘    │
 │              │                         │                      │
 │   ┌──────────────────┐    ┌────────────────────────────┐     │
 │   │  Qdrant  :6333   │    │  Neo4j  :7687              │     │
-│   │  Content vectors │    │  Knowledge graph           │     │
-│   │  User pref vecs  │    │  (User→Content→Genre→      │     │
-│   │  384-dim cosine  │    │   Theme→Person)            │     │
+│   │  Vector search   │    │  Knowledge graph           │     │
 │   └──────────────────┘    └────────────────────────────┘     │
-│                                                               │
-│   ┌─────────────────────────────────────────────────────┐    │
-│   │  HLS Streaming Proxy  :8001  (Node.js)               │    │
-│   └─────────────────────────────────────────────────────┘    │
 │                                                               │
 └───────────────────────────────────────────────────────────────┘
 ```
@@ -93,61 +99,43 @@ NEXUS is a white-label AI recommendation and content discovery platform for vide
 ### Recommendations
 ```http
 POST /v1/recommendations/
-{
-  "user_id": "usr_123",
-  "context": { "time_of_day": "evening", "device": "tv" },
-  "limit": 24
-}
+Authorization: Bearer <api_key>
+{"user_id": "usr_123", "context": {"time_of_day": "evening"}, "limit": 24}
 ```
 
-### Conversational Discovery ("Ask NEXUS")
+### Conversational Discovery
 ```http
 POST /v1/conversations/chat
-{
-  "user_id": "usr_123",
-  "message": "Something like Inception but for a rainy Tuesday night",
-  "session_id": "sess_abc"
-}
+{"user_id": "usr_123", "message": "Something like Inception for a rainy Tuesday night"}
 ```
 
 ### Proactive Agent
 ```http
 POST /v1/agents/proactive
-{ "user_id": "usr_123" }
-
-// Returns:
-{
-  "status": "ok",
-  "content": { "title": "Severance", ... },
-  "push_notification": { "body": "Severance is calling your name tonight ✦" },
-  "reasoning": "Friday evening, completed Silo last Tuesday, 94% pacing match"
-}
+{"user_id": "usr_123"}
 ```
 
 ### Semantic Search
 ```http
-GET /v1/search/?q=psychological+thriller+slow+burn+atmospheric
+GET /v1/search/?q=psychological+thriller+slow+burn
 ```
+
+Full interactive docs at **http://localhost:8000/docs**
 
 ---
 
 ## Configuration
 
-Edit `.env` to configure:
+All settings in `.env` (copied from `.env.example` on install):
 
 ```env
-# LLM — swap at runtime without code changes
-LLM_PROVIDER=anthropic          # anthropic | openai | local | mock
-ANTHROPIC_API_KEY=sk-ant-...    # required for anthropic provider
-OPENAI_API_KEY=sk-...           # optional alternative
+# LLM — swap without code changes
+LLM_PROVIDER=mock              # mock | anthropic | openai | local
+ANTHROPIC_API_KEY=             # add key to enable Claude
 
-# Licensing
-NEXUS_LICENSE_KEY=trial         # 30 days / 1,000 users free
-                                # purchase at nexus.ai/pricing for production
-
-# Infrastructure (Docker defaults)
-QDRANT_URL=http://qdrant:6333
-NEO4J_URI=bolt://neo4j:7687
+# Everything else works with defaults
+NEO4J_PASSWORD=nexus-dev-password
+NEXUS_LICENSE_KEY=trial
 ```
 
 ---
@@ -157,52 +145,36 @@ NEO4J_URI=bolt://neo4j:7687
 ```
 nexus-platform/
 ├── api/                     # FastAPI recommendation engine
-│   ├── main.py              # App entrypoint, lifespan, routers
-│   ├── config.py            # Pydantic settings, env vars
-│   ├── models.py            # Type contracts (Content, Signal, Recommendation)
-│   ├── catalog/
-│   │   ├── vector_store.py  # Qdrant async wrapper
-│   │   ├── graph.py         # Neo4j knowledge graph
-│   │   └── seed.py          # Curated catalog seed (40 titles)
-│   ├── recommendations/
-│   │   └── engine.py        # Multi-signal scoring + MMR diversity
-│   ├── agents/
-│   │   └── proactive.py     # 4-node proactive recommendation agent
-│   ├── routers/             # FastAPI route handlers
-│   └── llm/
-│       ├── orchestrator.py  # MCP-style LLM router
-│       └── providers.py     # Anthropic, OpenAI, Ollama, Mock
-├── frontend/                # React 18 + Tailwind + Framer Motion
-│   └── src/
-│       ├── App.jsx
-│       └── components/
-│           ├── Navbar.jsx
-│           ├── HeroSection.jsx
-│           ├── ContentRow.jsx           # Horizontal scroll with content cards
-│           ├── AskNexus.jsx             # Conversational discovery overlay
-│           ├── ExplainabilityPanel.jsx  # Signal breakdown ("Why this?")
-│           ├── ContentDNAModal.jsx      # Tension curve + full DNA view
-│           └── ProactiveAlert.jsx       # Agent push notification UI
-├── streaming/               # Node.js HLS proxy
-├── docker-compose.yml       # Full stack (API, DBs, Frontend, Seeder)
-├── install.sh               # Single-command installer
-└── LICENSE                  # Commercial license terms
+│   ├── main.py              # App entrypoint
+│   ├── config.py            # Settings
+│   ├── models.py            # Type contracts
+│   ├── catalog/             # Qdrant + Neo4j + seeder
+│   ├── recommendations/     # Multi-signal scoring engine
+│   ├── agents/              # Proactive recommendation agent
+│   ├── routers/             # HTTP route handlers
+│   ├── llm/                 # MCP-style LLM orchestration
+│   └── tests/               # 55 tests, all passing
+├── frontend/                # React 18 + Tailwind
+│   └── src/components/      # Navbar, HeroSection, AskNexus,
+│                            # ExplainabilityPanel, ContentDNAModal
+├── docker-compose.yml       # Full self-contained stack
+├── Dockerfile.fly           # Production Dockerfile
+├── install.sh               # One-command installer
+└── .env.example             # Default configuration
 ```
 
 ---
 
 ## Licensing
 
-NEXUS is available in three tiers:
+| Tier | Price | Users | Tenants |
+|------|-------|-------|---------|
+| **Trial** (default) | Free | 1,000 / 30 days | 1 |
+| **Commercial Annual** | $250K/year | Unlimited | 5 |
+| **Enterprise Perpetual** | $2.5M | Unlimited | Unlimited |
 
-| Tier | Price | Users | Tenants | Source |
-|------|-------|-------|---------|--------|
-| **Trial** (GitHub default) | Free | 1,000 / 30 days | 1 | ❌ |
-| **Commercial Annual** | $250K/year | Unlimited | 5 | ❌ |
-| **Enterprise Perpetual** | $2.5M | Unlimited | Unlimited | ✅ |
-
-Production use without a valid license key is prohibited. See [`LICENSE`](./LICENSE) for full terms.
+See [`LICENSE`](./LICENSE) for full terms.
 
 ---
 
-*Built by Duane Cash · duanecash@nexus.ai*
+*Built by Duane Cash*
