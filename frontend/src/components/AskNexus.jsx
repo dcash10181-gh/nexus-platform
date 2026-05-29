@@ -38,15 +38,41 @@ function getBotResponse(msg) {
   return DEFAULT_RESPONSE
 }
 
+// Keep a module-level reference so the utterance isn't garbage-collected mid-speech (Chrome bug)
+let _activeUtterance = null
+
 function speak(text) {
-  if (!window.speechSynthesis) return
-  window.speechSynthesis.cancel()
-  const utter = new SpeechSynthesisUtterance(text.replace(/\*\*/g,'').replace(/\n/g,' '))
-  utter.rate = 1.05
-  const voices = window.speechSynthesis.getVoices()
-  const pref = voices.find(v => v.name.includes('Samantha') || v.name.includes('Google US English') || v.name.includes('Alex'))
-  if (pref) utter.voice = pref
-  window.speechSynthesis.speak(utter)
+  const synth = window.speechSynthesis
+  if (!synth) return
+
+  synth.cancel() // clear any queued speech
+
+  const clean = text.replace(/\*\*/g, '').replace(/\n/g, ' ').trim()
+  if (!clean) return
+
+  const doSpeak = () => {
+    const utter = new SpeechSynthesisUtterance(clean)
+    utter.rate = 1.05
+    utter.pitch = 1.0
+    utter.volume = 1.0
+    const voices = synth.getVoices()
+    const pref = voices.find(v =>
+      /Samantha|Google US English|Alex|Daniel|Karen|Moira/.test(v.name)
+    ) || voices.find(v => v.lang?.startsWith('en'))
+    if (pref) utter.voice = pref
+    _activeUtterance = utter // prevent GC
+    // Small delay avoids the cancel/speak race condition in Chrome
+    setTimeout(() => synth.speak(utter), 60)
+  }
+
+  // Voices may not be loaded yet on first call — wait for them
+  if (synth.getVoices().length === 0) {
+    synth.addEventListener('voiceschanged', doSpeak, { once: true })
+    // Fallback in case the event never fires
+    setTimeout(() => { if (synth.getVoices().length > 0) doSpeak() }, 250)
+  } else {
+    doSpeak()
+  }
 }
 
 export default function AskNexus({ isOpen, onClose, onContentSelect, allContent = [] }) {
@@ -192,7 +218,17 @@ export default function AskNexus({ isOpen, onClose, onContentSelect, allContent 
           </div>
           <div className="flex items-center gap-2">
             {window.speechSynthesis && (
-              <button onClick={() => { setVoiceReply(v => !v); window.speechSynthesis.cancel() }} title={voiceReply ? 'Mute' : 'Read aloud'}
+              <button onClick={() => {
+                const turningOn = !voiceReply
+                setVoiceReply(turningOn)
+                window.speechSynthesis.cancel()
+                // Prime the speech engine with a user gesture (unlocks autoplay)
+                if (turningOn && window.speechSynthesis) {
+                  const warmup = new SpeechSynthesisUtterance('')
+                  warmup.volume = 0
+                  window.speechSynthesis.speak(warmup)
+                }
+              }} title={voiceReply ? 'Mute' : 'Read aloud'}
                 className={`p-1.5 rounded-lg transition-colors ${voiceReply ? 'text-nexus-cyan bg-nexus-cyan/10 border border-nexus-cyan/30' : 'text-nexus-subtext hover:bg-nexus-border/50'}`}>
                 {voiceReply ? <Volume2 size={15} /> : <VolumeX size={15} />}
               </button>

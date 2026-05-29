@@ -7,7 +7,8 @@ const NAV_ITEMS = [
   { label: 'Films',     page: 'films' },
   { label: 'New & Hot', page: 'new-hot' },
   { label: 'My List',   page: 'my-list' },
-  { label: 'Browse',    page: 'browse', icon: <ChevronDown size={13} className="ml-0.5" /> },
+  { label: 'Browse',    page: 'browse' },
+  { label: 'Impact',    page: 'impact' },
 ]
 
 export default function Navbar({ onAskNexus, apiConnected, currentPage = 'home', onNavigate }) {

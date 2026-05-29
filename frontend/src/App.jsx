@@ -8,6 +8,7 @@ import ProactiveAlert from './components/ProactiveAlert.jsx'
 import ExplainabilityPanel from './components/ExplainabilityPanel.jsx'
 import ContentDNAModal from './components/ContentDNAModal.jsx'
 import BrowsePage from './pages/BrowsePage.jsx'
+import ImpactDashboard from './pages/ImpactDashboard.jsx'
 import AdminDashboard from './pages/AdminDashboard.jsx'
 
 const MOCK_CONTENT = [
@@ -91,6 +92,8 @@ function MainApp() {
         return <BrowsePage title="New & Hot" subtitle="Released 2021 and later · Sorted by year" items={newAndHot} onCardClick={handleCardClick} onDNAClick={handleShowDNA} showGenreFilter />
       case 'my-list':
         return <BrowsePage title="My List" subtitle="Titles you've saved" items={myListItems} onCardClick={handleCardClick} onDNAClick={handleShowDNA} emptyMessage="Your list is empty — browse titles and save them here." />
+      case 'impact':
+        return <ImpactDashboard />
       case 'browse':
         return <BrowsePage title="Browse All" subtitle="Complete catalog · 81 titles" items={MOCK_CONTENT} onCardClick={handleCardClick} onDNAClick={handleShowDNA} showGenreFilter />
       default:
@@ -117,7 +120,7 @@ function MainApp() {
       )}
 
       {selectedContent && showDNA && (
-        <ContentDNAModal content={selectedContent} onClose={() => { setShowDNA(false); setSelectedContent(null) }} />
+        <ContentDNAModal content={selectedContent} onClose={() => setShowDNA(false)} />
       )}
 
       {selectedContent && !showDNA && (
