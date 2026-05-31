@@ -1,0 +1,408 @@
+From 21ec2d4f9ebea079d4aef78af79469dc2c572eb6 Mon Sep 17 00:00:00 2001
+From: sandbox <c@s.local>
+Date: Sun, 31 May 2026 22:20:50 +0000
+Subject: [PATCH] feat: single-service Railway deploy for conversational demo
+
+- Combined Dockerfile: build SPA, serve via FastAPI (SERVE_FRONTEND=true)
+- railway.json + .env.railway.example
+- main.py: serve built SPA + /api/v1 router alias + SPA fallback (single URL)
+- auth: stable NEXUS_DEMO_KEY bootstrap (survives restarts); guard /api/v1/*
+- frontend: send X-Nexus-Key (VITE_NEXUS_DEMO_KEY) on chat call
+- OpenAIProvider: support custom base_url -> Groq free tier (real inference, $0)
+- Drop Neo4j + seeder from demo (conversational layer doesn't need the graph)
+- RAILWAY_DEPLOYMENT.md runbook
+---
+ .env.railway.example                      | 33 ++++++++++
+ Dockerfile                                | 36 +++++++++++
+ api/config.py                             |  1 +
+ api/llm/orchestrator.py                   |  2 +-
+ api/llm/providers.py                      |  4 +-
+ api/main.py                               | 56 ++++++++++++++++-
+ api/middleware/auth.py                    | 31 +++++++--
+ docs/knowledge-base/RAILWAY_DEPLOYMENT.md | 77 +++++++++++++++++++++++
+ frontend/src/components/AskNexus.jsx      |  2 +-
+ railway.json                              | 11 ++++
+ 10 files changed, 242 insertions(+), 11 deletions(-)
+ create mode 100644 .env.railway.example
+ create mode 100644 Dockerfile
+ create mode 100644 docs/knowledge-base/RAILWAY_DEPLOYMENT.md
+ create mode 100644 railway.json
+
+diff --git a/.env.railway.example b/.env.railway.example
+new file mode 100644
+index 0000000..3bbe680
+--- /dev/null
++++ b/.env.railway.example
+@@ -0,0 +1,33 @@
++# ─── NEXUS Railway deployment — environment variables ───────────────────────
++# Set these in the Railway service "Variables" tab. Do NOT commit real values.
++
++# --- Core ---
++NEXUS_ENV=production
++SERVE_FRONTEND=true
++FRONTEND_DIST=/app/static
++# Railway injects PORT automatically; no need to set it.
++
++# --- Demo API key (stable, survives restarts) ---
++# Generate one: python3 -c "import secrets; print('nxk_trial_'+secrets.token_hex(16))"
++# The SAME value MUST also be passed as build arg VITE_NEXUS_DEMO_KEY so the
++# frontend authenticates to the conversational endpoint.
++NEXUS_DEMO_KEY=nxk_trial_REPLACE_ME
++
++# --- LLM provider (REAL inference for the demo, free tier) ---
++# Groq: free, fast, OpenAI-compatible. Get a key at console.groq.com.
++LLM_PROVIDER=openai
++OPENAI_API_KEY=gsk_REPLACE_ME_groq_key
++OPENAI_BASE_URL=https://api.groq.com/openai/v1
++OPENAI_MODEL=llama-3.3-70b-versatile
++# Fallback (flow-only screenshots, NOT a live buyer demo): LLM_PROVIDER=mock
++
++# --- Vector store (Qdrant Cloud free tier — external) ---
++QDRANT_URL=https://YOUR-CLUSTER.qdrant.io:6333
++QDRANT_API_KEY=REPLACE_ME_qdrant_cloud_key
++
++# --- Knowledge graph: DISABLED for the conversational-wedge demo ---
++# Not required by the conversational layer. Leave unset; the graph "warns but
++# doesn't crash" on startup (handled in main.py lifespan).
++# NEO4J_URI=
++# NEO4J_USER=
++# NEO4J_PASSWORD=
+diff --git a/Dockerfile b/Dockerfile
+new file mode 100644
+index 0000000..73010a8
+--- /dev/null
++++ b/Dockerfile
+@@ -0,0 +1,36 @@
++# NEXUS single-service deploy (Railway): build the frontend, then serve it
++# from the FastAPI app alongside the API. One container, one public URL.
++#
++# Stage 1 — build the React frontend
++FROM node:20-slim AS frontend
++WORKDIR /fe
++COPY frontend/package.json frontend/package-lock.json* ./
++RUN npm install
++COPY frontend/ ./
++# Baked in at build time so the SPA can authenticate to the chat endpoint.
++ARG VITE_NEXUS_DEMO_KEY
++ENV VITE_NEXUS_DEMO_KEY=$VITE_NEXUS_DEMO_KEY
++RUN npm run build
++
++# Stage 2 — Python API image that also serves the built SPA
++FROM python:3.12-slim
++WORKDIR /app
++
++RUN apt-get update && apt-get install -y --no-install-recommends \
++    build-essential curl \
++ && rm -rf /var/lib/apt/lists/*
++
++COPY api/requirements.txt .
++RUN pip install --no-cache-dir -r requirements.txt
++
++# Pre-download the embedding model so the first request is fast
++RUN python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')"
++
++COPY api/ .
++COPY --from=frontend /fe/dist /app/static
++
++ENV SERVE_FRONTEND=true
++ENV FRONTEND_DIST=/app/static
++ENV PORT=8000
++EXPOSE 8000
++CMD ["sh", "-c", "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000} --workers 1"]
+diff --git a/api/config.py b/api/config.py
+index 33a3763..52bdbce 100644
+--- a/api/config.py
++++ b/api/config.py
+@@ -35,6 +35,7 @@ class Settings(BaseSettings):
+     anthropic_model: str = "claude-sonnet-4-20250514"
+     openai_api_key: str = ""
+     openai_model: str = "gpt-4o-mini"
++    openai_base_url: str = ""           # set for OpenAI-compatible providers (e.g. Groq)
+     ollama_base_url: str = "http://host.docker.internal:11434"
+     ollama_model: str = "llama3.1:8b"
+ 
+diff --git a/api/llm/orchestrator.py b/api/llm/orchestrator.py
+index f44297d..60a77eb 100644
+--- a/api/llm/orchestrator.py
++++ b/api/llm/orchestrator.py
+@@ -120,7 +120,7 @@ def _build_provider(name: str) -> LLMProvider:
+         case "anthropic" if s.anthropic_api_key:
+             return AnthropicProvider(s.anthropic_api_key, s.anthropic_model)
+         case "openai" if s.openai_api_key:
+-            return OpenAIProvider(s.openai_api_key, s.openai_model)
++            return OpenAIProvider(s.openai_api_key, s.openai_model, s.openai_base_url)
+         case "local":
+             return OllamaProvider(s.ollama_base_url, s.ollama_model)
+         case "mock":
+diff --git a/api/llm/providers.py b/api/llm/providers.py
+index 32d1449..18cad00 100644
+--- a/api/llm/providers.py
++++ b/api/llm/providers.py
+@@ -94,9 +94,9 @@ class AnthropicProvider:
+ class OpenAIProvider:
+     name = "openai"
+ 
+-    def __init__(self, api_key: str, model: str):
++    def __init__(self, api_key: str, model: str, base_url: str = ""):
+         from openai import AsyncOpenAI
+-        self._client = AsyncOpenAI(api_key=api_key)
++        self._client = AsyncOpenAI(api_key=api_key, base_url=base_url or None)
+         self._model = model
+ 
+     async def complete(
+diff --git a/api/main.py b/api/main.py
+index 67b7a1d..ad05b62 100644
+--- a/api/main.py
++++ b/api/main.py
+@@ -4,11 +4,12 @@ NEXUS API — FastAPI application entry point.
+ from __future__ import annotations
+ 
+ import logging
++import os as _os
+ import time
+ from contextlib import asynccontextmanager
+ 
+ import structlog
+-from fastapi import FastAPI
++from fastapi import FastAPI, HTTPException
+ from fastapi.middleware.cors import CORSMiddleware
+ from fastapi.responses import JSONResponse
+ 
+@@ -92,8 +93,8 @@ async def health():
+     return {"status": "ok", "ts": int(time.time())}
+ 
+ 
+-@app.get("/", include_in_schema=False)
+-async def root():
++@app.get("/api-info", include_in_schema=False)
++async def api_info():
+     s = get_settings()
+     from utils.licensing import get_license
+     lic = get_license()
+@@ -101,7 +102,56 @@ async def root():
+             "llm": s.llm_provider, "license": lic.tier, "docs": "/docs"}
+ 
+ 
++# Serve the platform JSON at "/" only when NOT serving the frontend SPA there.
++if _os.getenv("SERVE_FRONTEND", "").lower() not in ("1", "true", "yes"):
++    @app.get("/", include_in_schema=False)
++    async def root():
++        return await api_info()
++
++
+ @app.exception_handler(Exception)
+ async def global_exception_handler(request, exc):
+     log.error("nexus.unhandled_error", path=str(request.url), error=str(exc))
+     return JSONResponse(status_code=500, content={"detail": "Internal server error"})
++
++
++# ── Single-service deploy (Railway): serve the built SPA + alias API under /api ──
++# Frontend ships in the same container and calls "/api/v1/...". We register the
++# same routers under /api/v1 and serve the static SPA for everything else.
++# Toggled by SERVE_FRONTEND so local Docker Compose (separate nginx) is unaffected.
++if _os.getenv("SERVE_FRONTEND", "").lower() in ("1", "true", "yes"):
++    from fastapi.staticfiles import StaticFiles
++    from fastapi.responses import FileResponse
++
++    for _r, _p, _t in (
++        (recommendations.router, "/api/v1/recommendations", "Recommendations"),
++        (search.router, "/api/v1/search", "Search"),
++        (conversations.router, "/api/v1/conversations", "Conversational AI"),
++        (users.router, "/api/v1/users", "Users"),
++        (content.router, "/api/v1/content", "Content"),
++        (agents.router, "/api/v1/agents", "Agents"),
++        (admin.router, "/api/v1/admin", "Admin"),
++        (live_router.router, "/api/v1/live", "Live AI"),
++    ):
++        app.include_router(_r, prefix=_p, tags=[_t])
++    app.include_router(federated_router, prefix="/api/v1/federated", tags=["Federated"])
++
++    _frontend_dist = _os.getenv("FRONTEND_DIST", "/app/static")
++    if _os.path.isdir(_os.path.join(_frontend_dist, "assets")):
++        app.mount(
++            "/assets",
++            StaticFiles(directory=_os.path.join(_frontend_dist, "assets")),
++            name="assets",
++        )
++
++    # Catch-all SPA fallback — MUST be the last route registered.
++    @app.get("/{full_path:path}", include_in_schema=False)
++    async def spa_fallback(full_path: str):
++        if full_path.startswith(
++            ("api/", "v1/", "docs", "redoc", "openapi.json", "health", "api-info", "assets/")
++        ):
++            raise HTTPException(status_code=404, detail="Not found")
++        candidate = _os.path.join(_frontend_dist, full_path)
++        if full_path and _os.path.isfile(candidate):
++            return FileResponse(candidate)
++        return FileResponse(_os.path.join(_frontend_dist, "index.html"))
+diff --git a/api/middleware/auth.py b/api/middleware/auth.py
+index a31d364..d5a317e 100644
+--- a/api/middleware/auth.py
++++ b/api/middleware/auth.py
+@@ -89,13 +89,36 @@ def generate_key(
+ 
+ 
+ def _bootstrap_dev_key() -> None:
+-    """Create a dev key on startup so local testing works out of the box."""
++    """Seed API keys on startup.
++
++    If NEXUS_DEMO_KEY is set, register it as a fixed, stable trial key — this
++    is what the deployed demo and the frontend use, so it survives restarts and
++    the in-memory store. Otherwise fall back to a random per-boot dev key.
++    """
++    import os
++
++    demo_key = os.getenv("NEXUS_DEMO_KEY", "").strip()
++    if demo_key:
++        h = _hash_key(demo_key)
++        if h not in _KEY_STORE:
++            _KEY_STORE[h] = ApiKey(
++                key_hash=h,
++                tenant_id="demo-tenant",
++                tier="trial",
++                created_at=time.time(),
++                expires_at=None,
++                user_cap=None,
++                label="public-demo",
++            )
++            log.info("NEXUS demo API key registered from NEXUS_DEMO_KEY")
++        return
++
+     if _KEY_STORE:
+         return
+     plaintext, _ = generate_key("dev-tenant", "trial", label="local-dev")
+     log.warning(
+         "NEXUS dev API key generated (trial): %s  "
+-        "— Set NEXUS_API_KEY in .env to use a fixed key",
++        "— Set NEXUS_DEMO_KEY in the environment to use a fixed key",
+         plaintext,
+     )
+ 
+@@ -182,8 +205,8 @@ class AuthMiddleware(BaseHTTPMiddleware):
+         if path in UNPROTECTED_EXACT or any(path.startswith(p) for p in UNPROTECTED_PREFIX):
+             return await call_next(request)
+ 
+-        # /v1/* — check header exists (full validation in dependency)
+-        if path.startswith("/v1/"):
++        # /v1/* (including /api/v1/*) — check header exists (full validation in dependency)
++        if "/v1/" in path:
+             has_key = (
+                 request.headers.get("Authorization", "").startswith("Bearer ")
+                 or request.headers.get("X-Nexus-Key")
+diff --git a/docs/knowledge-base/RAILWAY_DEPLOYMENT.md b/docs/knowledge-base/RAILWAY_DEPLOYMENT.md
+new file mode 100644
+index 0000000..0859d68
+--- /dev/null
++++ b/docs/knowledge-base/RAILWAY_DEPLOYMENT.md
+@@ -0,0 +1,77 @@
++# Railway Deployment Runbook — NEXUS conversational demo
++
++**Goal:** one public URL to point a prospect at, running real LLM inference, on free tiers, as a single Railway service.
++
++## Architecture (why one service)
++
++The demo ships as a **single container**: FastAPI serves both the API and the
++built React SPA. This avoids cross-service networking, CORS, and the multi-DB
++resource blowout that makes the 5-service Compose stack unsuitable for Railway's
++free tier. Neo4j and the seeder are dropped (the conversational layer doesn't
++need the graph). Qdrant runs on its own Cloud free tier, external to Railway.
++
++- `Dockerfile` (repo root): builds the frontend, copies `dist/` into the API
++  image, serves both. Controlled by `SERVE_FRONTEND=true`.
++- `railway.json`: tells Railway to build from the Dockerfile, health-check `/health`.
++- `.env.railway.example`: the variables to set in Railway.
++
++## One-time setup
++
++1. **Generate a demo API key:**
++   ```
++   python3 -c "import secrets; print('nxk_trial_'+secrets.token_hex(16))"
++   ```
++   Save it — you'll use the SAME value in two places below.
++
++2. **Get a free Groq key** at console.groq.com (OpenAI-compatible, real inference, $0).
++
++3. **Qdrant Cloud free tier** — create a cluster, copy its URL and API key.
++
++## Deploy
++
++1. Push this branch to GitHub (the Dockerfile + railway.json must be in the repo).
++2. In Railway: New Project → Deploy from GitHub repo → select `nexus-platform`.
++3. Railway detects `railway.json` and builds from the Dockerfile.
++4. Set **Variables** (from `.env.railway.example`):
++   - `NEXUS_ENV=production`
++   - `SERVE_FRONTEND=true`
++   - `NEXUS_DEMO_KEY=<the key from step 1>`
++   - `LLM_PROVIDER=openai`
++   - `OPENAI_API_KEY=<groq key>`
++   - `OPENAI_BASE_URL=https://api.groq.com/openai/v1`
++   - `OPENAI_MODEL=llama-3.3-70b-versatile`
++   - `QDRANT_URL=<your qdrant cloud url>`
++   - `QDRANT_API_KEY=<your qdrant cloud key>`
++5. Set the **build arg** `VITE_NEXUS_DEMO_KEY` = the SAME value as `NEXUS_DEMO_KEY`.
++   (Railway: service → Settings → Build → Build Args. This bakes the key into the
++   SPA so it can authenticate to the chat endpoint.)
++6. Deploy. Railway assigns a public URL.
++
++## Seed the catalog (one-time, after first deploy)
++
++Qdrant starts empty. Run the seeder against your Cloud Qdrant once:
++```
++# locally, pointing at the cloud Qdrant:
++QDRANT_URL=<cloud url> QDRANT_API_KEY=<cloud key> python3 -m catalog.seed
++```
++
++## Verify the live deploy
++
++- `https://<app>.railway.app/health` → `{"status":"ok"}`
++- `https://<app>.railway.app/` → the NEXUS SPA loads
++- Open Ask Nexus, type a free-form query ("something tense and slow") →
++  a real LLM response (NOT canned). If it's canned, `LLM_PROVIDER` is still mock.
++- Say/type "watch Aftersun" → jumps to the open-confirmation flow.
++
++## Gotchas (learned the hard way)
++
++- **Auth on the chat endpoint:** `/api/v1/*` requires a key. The SPA sends
++  `X-Nexus-Key` from `VITE_NEXUS_DEMO_KEY` (build-time). If the build arg is
++  missing, every chat call 401s — and the title matcher still works (it's
++  client-side), so the demo looks fine until someone types a real query.
++- **Demo key must be stable:** the old code generated a random key per boot.
++  `NEXUS_DEMO_KEY` pins it so it survives restarts.
++- **Mock provider is a deal-killer live:** canned responses expose the demo the
++  moment a prospect goes off-script. Always use the Groq path for buyer demos.
++- **Free-tier sleep:** Railway free services sleep when idle; first request after
++  sleep is slow. Warn the prospect, or hit the URL right before a call.
+diff --git a/frontend/src/components/AskNexus.jsx b/frontend/src/components/AskNexus.jsx
+index a05ac8e..e1fbfcf 100644
+--- a/frontend/src/components/AskNexus.jsx
++++ b/frontend/src/components/AskNexus.jsx
+@@ -215,7 +215,7 @@ export default function AskNexus({ isOpen, onClose, onContentSelect, allContent
+     // Normal query
+     let reply = '', suggestions = [], primary = null
+     try {
+-      const res = await fetch('/api/v1/conversations/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ user_id: 'demo-user', message: userMsg, session_id: 'nexus-ui' }) })
++      const res = await fetch('/api/v1/conversations/chat', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Nexus-Key': import.meta.env.VITE_NEXUS_DEMO_KEY || '' }, body: JSON.stringify({ user_id: 'demo-user', message: userMsg, session_id: 'nexus-ui' }) })
+       if (res.ok) { const d = await res.json(); reply = d.reply; suggestions = d.content_suggestions?.map(s => s.id) || [] }
+     } catch {}
+ 
+diff --git a/railway.json b/railway.json
+new file mode 100644
+index 0000000..dccb16c
+--- /dev/null
++++ b/railway.json
+@@ -0,0 +1,11 @@
++{
++  "$schema": "https://railway.app/railway.schema.json",
++  "build": { "builder": "DOCKERFILE", "dockerfilePath": "Dockerfile" },
++  "deploy": {
++    "startCommand": "uvicorn main:app --host 0.0.0.0 --port ${PORT:-8000} --workers 1",
++    "healthcheckPath": "/health",
++    "healthcheckTimeout": 120,
++    "restartPolicyType": "ON_FAILURE",
++    "restartPolicyMaxRetries": 3
++  }
++}
+-- 
+2.43.0
+
