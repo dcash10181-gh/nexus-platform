@@ -94,9 +94,9 @@ class AnthropicProvider:
 class OpenAIProvider:
     name = "openai"
 
-    def __init__(self, api_key: str, model: str):
+    def __init__(self, api_key: str, model: str, base_url: str = ""):
         from openai import AsyncOpenAI
-        self._client = AsyncOpenAI(api_key=api_key)
+        self._client = AsyncOpenAI(api_key=api_key, base_url=base_url or None)
         self._model = model
 
     async def complete(

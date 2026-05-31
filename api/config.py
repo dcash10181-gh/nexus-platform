@@ -35,6 +35,7 @@ class Settings(BaseSettings):
     anthropic_model: str = "claude-sonnet-4-20250514"
     openai_api_key: str = ""
     openai_model: str = "gpt-4o-mini"
+    openai_base_url: str = ""           # set for OpenAI-compatible providers (e.g. Groq)
     ollama_base_url: str = "http://host.docker.internal:11434"
     ollama_model: str = "llama3.1:8b"
 

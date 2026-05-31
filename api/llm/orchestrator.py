@@ -120,7 +120,7 @@ def _build_provider(name: str) -> LLMProvider:
         case "anthropic" if s.anthropic_api_key:
             return AnthropicProvider(s.anthropic_api_key, s.anthropic_model)
         case "openai" if s.openai_api_key:
-            return OpenAIProvider(s.openai_api_key, s.openai_model)
+            return OpenAIProvider(s.openai_api_key, s.openai_model, s.openai_base_url)
         case "local":
             return OllamaProvider(s.ollama_base_url, s.ollama_model)
         case "mock":

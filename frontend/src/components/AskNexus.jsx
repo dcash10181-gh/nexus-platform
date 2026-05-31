@@ -215,7 +215,7 @@ export default function AskNexus({ isOpen, onClose, onContentSelect, allContent 
     // Normal query
     let reply = '', suggestions = [], primary = null
     try {
-      const res = await fetch('/api/v1/conversations/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ user_id: 'demo-user', message: userMsg, session_id: 'nexus-ui' }) })
+      const res = await fetch('/api/v1/conversations/chat', { method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Nexus-Key': import.meta.env.VITE_NEXUS_DEMO_KEY || '' }, body: JSON.stringify({ user_id: 'demo-user', message: userMsg, session_id: 'nexus-ui' }) })
       if (res.ok) { const d = await res.json(); reply = d.reply; suggestions = d.content_suggestions?.map(s => s.id) || [] }
     } catch {}
 

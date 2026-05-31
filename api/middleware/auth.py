@@ -89,13 +89,36 @@ def generate_key(
 
 
 def _bootstrap_dev_key() -> None:
-    """Create a dev key on startup so local testing works out of the box."""
+    """Seed API keys on startup.
+
+    If NEXUS_DEMO_KEY is set, register it as a fixed, stable trial key — this
+    is what the deployed demo and the frontend use, so it survives restarts and
+    the in-memory store. Otherwise fall back to a random per-boot dev key.
+    """
+    import os
+
+    demo_key = os.getenv("NEXUS_DEMO_KEY", "").strip()
+    if demo_key:
+        h = _hash_key(demo_key)
+        if h not in _KEY_STORE:
+            _KEY_STORE[h] = ApiKey(
+                key_hash=h,
+                tenant_id="demo-tenant",
+                tier="trial",
+                created_at=time.time(),
+                expires_at=None,
+                user_cap=None,
+                label="public-demo",
+            )
+            log.info("NEXUS demo API key registered from NEXUS_DEMO_KEY")
+        return
+
     if _KEY_STORE:
         return
     plaintext, _ = generate_key("dev-tenant", "trial", label="local-dev")
     log.warning(
         "NEXUS dev API key generated (trial): %s  "
-        "— Set NEXUS_API_KEY in .env to use a fixed key",
+        "— Set NEXUS_DEMO_KEY in the environment to use a fixed key",
         plaintext,
     )
 
@@ -182,8 +205,8 @@ class AuthMiddleware(BaseHTTPMiddleware):
         if path in UNPROTECTED_EXACT or any(path.startswith(p) for p in UNPROTECTED_PREFIX):
             return await call_next(request)
 
-        # /v1/* — check header exists (full validation in dependency)
-        if path.startswith("/v1/"):
+        # /v1/* (including /api/v1/*) — check header exists (full validation in dependency)
+        if "/v1/" in path:
             has_key = (
                 request.headers.get("Authorization", "").startswith("Bearer ")
                 or request.headers.get("X-Nexus-Key")

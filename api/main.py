@@ -4,11 +4,12 @@ NEXUS API — FastAPI application entry point.
 from __future__ import annotations
 
 import logging
+import os as _os
 import time
 from contextlib import asynccontextmanager
 
 import structlog
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
@@ -92,8 +93,8 @@ async def health():
     return {"status": "ok", "ts": int(time.time())}
 
 
-@app.get("/", include_in_schema=False)
-async def root():
+@app.get("/api-info", include_in_schema=False)
+async def api_info():
     s = get_settings()
     from utils.licensing import get_license
     lic = get_license()
@@ -101,7 +102,56 @@ async def root():
             "llm": s.llm_provider, "license": lic.tier, "docs": "/docs"}
 
 
+# Serve the platform JSON at "/" only when NOT serving the frontend SPA there.
+if _os.getenv("SERVE_FRONTEND", "").lower() not in ("1", "true", "yes"):
+    @app.get("/", include_in_schema=False)
+    async def root():
+        return await api_info()
+
+
 @app.exception_handler(Exception)
 async def global_exception_handler(request, exc):
     log.error("nexus.unhandled_error", path=str(request.url), error=str(exc))
     return JSONResponse(status_code=500, content={"detail": "Internal server error"})
+
+
+# ── Single-service deploy (Railway): serve the built SPA + alias API under /api ──
+# Frontend ships in the same container and calls "/api/v1/...". We register the
+# same routers under /api/v1 and serve the static SPA for everything else.
+# Toggled by SERVE_FRONTEND so local Docker Compose (separate nginx) is unaffected.
+if _os.getenv("SERVE_FRONTEND", "").lower() in ("1", "true", "yes"):
+    from fastapi.staticfiles import StaticFiles
+    from fastapi.responses import FileResponse
+
+    for _r, _p, _t in (
+        (recommendations.router, "/api/v1/recommendations", "Recommendations"),
+        (search.router, "/api/v1/search", "Search"),
+        (conversations.router, "/api/v1/conversations", "Conversational AI"),
+        (users.router, "/api/v1/users", "Users"),
+        (content.router, "/api/v1/content", "Content"),
+        (agents.router, "/api/v1/agents", "Agents"),
+        (admin.router, "/api/v1/admin", "Admin"),
+        (live_router.router, "/api/v1/live", "Live AI"),
+    ):
+        app.include_router(_r, prefix=_p, tags=[_t])
+    app.include_router(federated_router, prefix="/api/v1/federated", tags=["Federated"])
+
+    _frontend_dist = _os.getenv("FRONTEND_DIST", "/app/static")
+    if _os.path.isdir(_os.path.join(_frontend_dist, "assets")):
+        app.mount(
+            "/assets",
+            StaticFiles(directory=_os.path.join(_frontend_dist, "assets")),
+            name="assets",
+        )
+
+    # Catch-all SPA fallback — MUST be the last route registered.
+    @app.get("/{full_path:path}", include_in_schema=False)
+    async def spa_fallback(full_path: str):
+        if full_path.startswith(
+            ("api/", "v1/", "docs", "redoc", "openapi.json", "health", "api-info", "assets/")
+        ):
+            raise HTTPException(status_code=404, detail="Not found")
+        candidate = _os.path.join(_frontend_dist, full_path)
+        if full_path and _os.path.isfile(candidate):
+            return FileResponse(candidate)
+        return FileResponse(_os.path.join(_frontend_dist, "index.html"))
