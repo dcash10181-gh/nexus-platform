@@ -43,8 +43,8 @@ services:
   # ── API ──────────────────────────────────────────────────────────────────
   api:
     build:
-      context: .
-      dockerfile: Dockerfile.fly
+      context: ./api
+      dockerfile: Dockerfile
     container_name: nexus-api
     ports:
       - "8000:8000"
@@ -90,8 +90,8 @@ services:
   # ── One-shot catalog seeder ──────────────────────────────────────────────
   seeder:
     build:
-      context: .
-      dockerfile: Dockerfile.fly
+      context: ./api
+      dockerfile: Dockerfile
     container_name: nexus-seeder
     command: python -m catalog.seed
     environment:

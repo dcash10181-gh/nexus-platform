@@ -158,7 +158,7 @@ nexus-platform/
 │   └── src/components/      # Navbar, HeroSection, AskNexus,
 │                            # ExplainabilityPanel, ContentDNAModal
 ├── docker-compose.yml       # Full self-contained stack
-├── Dockerfile.fly           # Production Dockerfile
+├── api/Dockerfile           # Production Dockerfile
 ├── install.sh               # One-command installer
 └── .env.example             # Default configuration
 ```

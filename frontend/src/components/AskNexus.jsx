@@ -38,6 +38,36 @@ function getBotResponse(msg) {
   return DEFAULT_RESPONSE
 }
 
+// Lead-in phrases that signal direct title intent ("play X", "I want to watch X").
+const TITLE_CUES = ['watch', 'play', 'open', 'put on', 'start', 'show me', 'i want to see', 'turn on']
+
+// Does the message name a specific catalog title? Returns the matched item or null.
+// Runs BEFORE mood matching so "play Aftersun" routes straight to open-confirmation.
+function findTitleMatch(msg, catalog) {
+  if (!catalog || catalog.length === 0) return null
+  const lower = msg.toLowerCase().replace(/[^\w\s:'-]/g, ' ').replace(/\s+/g, ' ').trim()
+  const norm = s => s.toLowerCase().replace(/[^\w\s]/g, ' ').replace(/\s+/g, ' ').trim()
+  const normMsg = norm(lower)
+  const hasCue = TITLE_CUES.some(c => lower.includes(c))
+
+  let best = null
+  for (const item of catalog) {
+    const t = (item.title || '').trim()
+    if (!t) continue
+    const nt = norm(t)
+    if (!nt) continue
+    // Very short titles (<= 4 chars, e.g. "Dark") only match when a cue verb is present,
+    // to avoid colliding with mood words like "something dark and slow".
+    if (nt.length <= 4 && !hasCue) continue
+    const esc = nt.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    const re = new RegExp(`(^|\\b)${esc}(\\b|$)`)
+    if (re.test(normMsg)) {
+      if (!best || nt.length > norm(best.title).length) best = item
+    }
+  }
+  return best
+}
+
 // Keep a module-level reference so the utterance isn't garbage-collected mid-speech (Chrome bug)
 let _activeUtterance = null
 
@@ -164,6 +194,22 @@ export default function AskNexus({ isOpen, onClose, onContentSelect, allContent 
         return
       }
       setPendingTitle(null)
+    }
+
+    // PRIORITY: did the user name a specific catalog title? Go straight to open-confirmation.
+    const titleHit = findTitleMatch(userMsg, allContent)
+    if (titleHit) {
+      setLoading(false)
+      const reply = `**${titleHit.title}** — great pick.`
+      setMessages(prev => [...prev, { role: 'assistant', text: reply }])
+      setPendingTitle({ id: titleHit.id, title: titleHit.title })
+      setTimeout(() => {
+        const confirmMsg = `Would you like to open **${titleHit.title}**?`
+        setMessages(prev => [...prev, { role: 'assistant', text: confirmMsg, isConfirm: true }])
+        if (voiceReply) speak(`${titleHit.title}. Would you like to open it?`)
+        setAwaitingConfirm(true)
+      }, 600)
+      return
     }
 
     // Normal query
@@ -306,7 +352,7 @@ export default function AskNexus({ isOpen, onClose, onContentSelect, allContent 
             </button>
           </div>
           <p className="text-[10px] font-mono text-nexus-muted text-center mt-2">
-            {speechSupported ? 'Pause to auto-send · 🔊 for voice responses · 81 titles' : 'Chrome / Safari for voice input · 81 titles'}
+            {speechSupported ? 'Pause to auto-send · 🔊 for voice responses · 98 titles' : 'Chrome / Safari for voice input · 98 titles'}
           </p>
         </div>
       </div>

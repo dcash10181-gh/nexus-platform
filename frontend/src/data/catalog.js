@@ -1,0 +1,4032 @@
+// AUTO-GENERATED from api/catalog/seed.py — do not edit by hand.
+// Regenerate via: python scripts/export_catalog.py
+const CATALOG = [
+  {
+    "id": "the-wire-s1-2002",
+    "title": "The Wire",
+    "year": 2002,
+    "kind": "series",
+    "synopsis": "The Baltimore drug trade and the police who surveil it, told from both sides with documentary-level authenticity. The greatest TV drama ever made.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "cast": [
+      "Dominic West",
+      "Idris Elba",
+      "Michael K. Williams"
+    ],
+    "director": "David Simon",
+    "rating": 9.3,
+    "poster_url": "https://image.tmdb.org/t/p/w500/4lCqDTOoHhLkUvDe5kmqLOv0pK7.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=1400&q=80",
+    "dna": {
+      "pacing": 0.45,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.65,
+        0.75,
+        0.82,
+        0.88
+      ],
+      "visual_style": "gritty documentary",
+      "audio_mood": "urban sparse",
+      "thematic_tags": [
+        "institutional failure",
+        "drug trade",
+        "surveillance",
+        "class",
+        "Baltimore"
+      ],
+      "runtime_min": 58
+    }
+  },
+  {
+    "id": "breaking-bad-s1-2008",
+    "title": "Breaking Bad",
+    "year": 2008,
+    "kind": "series",
+    "synopsis": "A high school chemistry teacher diagnosed with cancer turns to cooking methamphetamine to secure his family's future. The defining TV antihero story.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Bryan Cranston",
+      "Aaron Paul",
+      "Anna Gunn"
+    ],
+    "director": "Vince Gilligan",
+    "rating": 9.5,
+    "poster_url": "https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1509909756405-be0199881695?w=1400&q=80",
+    "dna": {
+      "pacing": 0.62,
+      "tension_curve": [
+        0.2,
+        0.45,
+        0.65,
+        0.8,
+        0.92,
+        0.98
+      ],
+      "visual_style": "desert neo western",
+      "audio_mood": "tense percussive",
+      "thematic_tags": [
+        "transformation",
+        "pride",
+        "family",
+        "consequences",
+        "New Mexico"
+      ],
+      "runtime_min": 48
+    }
+  },
+  {
+    "id": "the-sopranos-s1-1999",
+    "title": "The Sopranos",
+    "year": 1999,
+    "kind": "series",
+    "synopsis": "New Jersey mob boss Tony Soprano navigates family life and organized crime while attending therapy. The show that invented prestige television.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "cast": [
+      "James Gandolfini",
+      "Edie Falco",
+      "Lorraine Bracco"
+    ],
+    "director": "David Chase",
+    "rating": 9.2,
+    "poster_url": "https://image.tmdb.org/t/p/w500/57okJJUBK0AaijxkciggHKTXPEF.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1400&q=80",
+    "dna": {
+      "pacing": 0.48,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.6,
+        0.72,
+        0.8,
+        0.85
+      ],
+      "visual_style": "suburban realism",
+      "audio_mood": "operatic ironic",
+      "thematic_tags": [
+        "mob",
+        "therapy",
+        "New Jersey",
+        "masculinity",
+        "family dysfunction"
+      ],
+      "runtime_min": 55
+    }
+  },
+  {
+    "id": "mad-men-s1-2007",
+    "title": "Mad Men",
+    "year": 2007,
+    "kind": "series",
+    "synopsis": "The professional and personal lives of the employees at a 1960s Madison Avenue advertising agency. Style as substance.",
+    "genres": [
+      "Drama"
+    ],
+    "cast": [
+      "Jon Hamm",
+      "Elisabeth Moss",
+      "January Jones"
+    ],
+    "director": "Matthew Weiner",
+    "rating": 8.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/7v8iCNiPFDRMmgMaqFGKFuQfxNs.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1400&q=80",
+    "dna": {
+      "pacing": 0.35,
+      "tension_curve": [
+        0.25,
+        0.38,
+        0.5,
+        0.6,
+        0.68,
+        0.72
+      ],
+      "visual_style": "period elegance",
+      "audio_mood": "jazz melancholic",
+      "thematic_tags": [
+        "identity",
+        "1960s",
+        "advertising",
+        "American Dream",
+        "nostalgia"
+      ],
+      "runtime_min": 47
+    }
+  },
+  {
+    "id": "better-call-saul-s1-2015",
+    "title": "Better Call Saul",
+    "year": 2015,
+    "kind": "series",
+    "synopsis": "The transformation of Jimmy McGill into criminal lawyer Saul Goodman. A prequel that surpassed its parent show.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "cast": [
+      "Bob Odenkirk",
+      "Jonathan Banks",
+      "Rhea Seehorn"
+    ],
+    "director": "Vince Gilligan",
+    "rating": 9.0,
+    "poster_url": "https://image.tmdb.org/t/p/w500/fC2HDm5t0kR9HFQTGkQrD0pFL5.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1509909756405-be0199881695?w=1400&q=80",
+    "dna": {
+      "pacing": 0.4,
+      "tension_curve": [
+        0.2,
+        0.38,
+        0.55,
+        0.7,
+        0.85,
+        0.9
+      ],
+      "visual_style": "desert minimalist",
+      "audio_mood": "sparse blues",
+      "thematic_tags": [
+        "moral decline",
+        "law",
+        "loyalty",
+        "consequence",
+        "Albuquerque"
+      ],
+      "runtime_min": 48
+    }
+  },
+  {
+    "id": "mindhunter-s1-2017",
+    "title": "Mindhunter",
+    "year": 2017,
+    "kind": "series",
+    "synopsis": "FBI agents develop criminal profiling by interviewing incarcerated serial killers in the 1970s. Fincher's coldest, most precise work.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Jonathan Groff",
+      "Holt McCallany",
+      "Anna Torv"
+    ],
+    "director": "David Fincher",
+    "rating": 8.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/6bPCGEMBd58oFJA4EWqAGFHhXbT.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=1400&q=80",
+    "dna": {
+      "pacing": 0.38,
+      "tension_curve": [
+        0.2,
+        0.35,
+        0.5,
+        0.62,
+        0.72,
+        0.78
+      ],
+      "visual_style": "clinical 70s",
+      "audio_mood": "cold procedural",
+      "thematic_tags": [
+        "serial killers",
+        "FBI",
+        "psychology",
+        "1970s",
+        "profiling"
+      ],
+      "runtime_min": 55
+    }
+  },
+  {
+    "id": "ozark-s1-2017",
+    "title": "Ozark",
+    "year": 2017,
+    "kind": "series",
+    "synopsis": "A Chicago financial advisor is forced to relocate his family to the Missouri Ozarks to launder money for a drug cartel.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Jason Bateman",
+      "Laura Linney",
+      "Julia Garner"
+    ],
+    "director": "Jason Bateman",
+    "rating": 8.4,
+    "poster_url": "https://image.tmdb.org/t/p/w500/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1400&q=80",
+    "dna": {
+      "pacing": 0.65,
+      "tension_curve": [
+        0.35,
+        0.55,
+        0.7,
+        0.82,
+        0.9,
+        0.94
+      ],
+      "visual_style": "blue toned rural",
+      "audio_mood": "ominous country",
+      "thematic_tags": [
+        "money laundering",
+        "cartel",
+        "family under pressure",
+        "Missouri",
+        "survival"
+      ],
+      "runtime_min": 60
+    }
+  },
+  {
+    "id": "chernobyl-2019",
+    "title": "Chernobyl",
+    "year": 2019,
+    "kind": "limited",
+    "synopsis": "The true story of the 1986 nuclear disaster and the men and women who sacrificed to contain it. The most precise limited series ever made.",
+    "genres": [
+      "Drama",
+      "History",
+      "Thriller"
+    ],
+    "cast": [
+      "Jared Harris",
+      "Stellan Skarsgård",
+      "Emily Watson"
+    ],
+    "director": "Johan Renck",
+    "rating": 9.4,
+    "poster_url": "https://image.tmdb.org/t/p/w500/hlLXt2tOPT6RRnjiUmoxyG1LTFi.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=1400&q=80",
+    "dna": {
+      "pacing": 0.55,
+      "tension_curve": [
+        0.4,
+        0.6,
+        0.75,
+        0.88,
+        0.95,
+        0.9
+      ],
+      "visual_style": "soviet grey",
+      "audio_mood": "industrial dread",
+      "thematic_tags": [
+        "nuclear disaster",
+        "Soviet Union",
+        "truth",
+        "sacrifice",
+        "bureaucracy"
+      ],
+      "runtime_min": 65
+    }
+  },
+  {
+    "id": "peaky-blinders-s1-2013",
+    "title": "Peaky Blinders",
+    "year": 2013,
+    "kind": "series",
+    "synopsis": "A gangster family epic set in 1920s Birmingham, England. Led by the fearsome Tommy Shelby.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "cast": [
+      "Cillian Murphy",
+      "Helen McCrory",
+      "Paul Anderson"
+    ],
+    "director": "Steven Knight",
+    "rating": 8.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/vUUqzWa2LnHIVqkaKVlVGkPaQca.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1558980394-34764db076b4?w=1400&q=80",
+    "dna": {
+      "pacing": 0.6,
+      "tension_curve": [
+        0.35,
+        0.55,
+        0.7,
+        0.8,
+        0.88,
+        0.92
+      ],
+      "visual_style": "industrial noir",
+      "audio_mood": "rock period hybrid",
+      "thematic_tags": [
+        "1920s",
+        "organized crime",
+        "Birmingham",
+        "PTSD",
+        "family empire"
+      ],
+      "runtime_min": 55
+    }
+  },
+  {
+    "id": "mr-robot-s1-2015",
+    "title": "Mr. Robot",
+    "year": 2015,
+    "kind": "series",
+    "synopsis": "A cybersecurity engineer and hacker is recruited by a mysterious anarchist to help destroy the company he works for.",
+    "genres": [
+      "Thriller",
+      "Sci-Fi",
+      "Drama"
+    ],
+    "cast": [
+      "Rami Malek",
+      "Christian Slater",
+      "Portia Doubleday"
+    ],
+    "director": "Sam Esmail",
+    "rating": 8.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/oKIBhzZzDX07SoE2bOLhq2EsfUE.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1400&q=80",
+    "dna": {
+      "pacing": 0.55,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.68,
+        0.8,
+        0.9,
+        0.88
+      ],
+      "visual_style": "urban paranoid",
+      "audio_mood": "electronic anxious",
+      "thematic_tags": [
+        "hacking",
+        "dissociation",
+        "capitalism",
+        "surveillance",
+        "mental illness"
+      ],
+      "runtime_min": 45
+    }
+  },
+  {
+    "id": "westworld-s1-2016",
+    "title": "Westworld",
+    "year": 2016,
+    "kind": "series",
+    "synopsis": "A futuristic theme park populated by android hosts goes dangerously wrong as its creations begin to question their reality.",
+    "genres": [
+      "Sci-Fi",
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Evan Rachel Wood",
+      "Anthony Hopkins",
+      "Ed Harris"
+    ],
+    "director": "Jonathan Nolan",
+    "rating": 8.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/8MfgyFHR7OGljow9KCLnQ7aBHfz.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1400&q=80",
+    "dna": {
+      "pacing": 0.5,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.65,
+        0.78,
+        0.88,
+        0.95
+      ],
+      "visual_style": "neo western cinematic",
+      "audio_mood": "orchestral unsettling",
+      "thematic_tags": [
+        "AI consciousness",
+        "free will",
+        "theme park",
+        "violence",
+        "loops"
+      ],
+      "runtime_min": 62
+    }
+  },
+  {
+    "id": "halt-and-catch-fire-s1-2014",
+    "title": "Halt and Catch Fire",
+    "year": 2014,
+    "kind": "series",
+    "synopsis": "Set in the 1980s Texas silicon prairie, this drama chronicles the personal computer revolution through a team of dreamers and builders.",
+    "genres": [
+      "Drama"
+    ],
+    "cast": [
+      "Lee Pace",
+      "Scoot McNairy",
+      "Mackenzie Davis"
+    ],
+    "director": "Christopher Cantwell",
+    "rating": 8.4,
+    "poster_url": "https://image.tmdb.org/t/p/w500/k9VBFqHGHmJUEjMQnH5eXO16tR2.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80",
+    "dna": {
+      "pacing": 0.42,
+      "tension_curve": [
+        0.25,
+        0.42,
+        0.58,
+        0.7,
+        0.78,
+        0.82
+      ],
+      "visual_style": "80s warm nostalgic",
+      "audio_mood": "synth emotional",
+      "thematic_tags": [
+        "tech revolution",
+        "ambition",
+        "1980s",
+        "collaboration",
+        "Silicon Valley"
+      ],
+      "runtime_min": 48
+    }
+  },
+  {
+    "id": "battlestar-galactica-2004",
+    "title": "Battlestar Galactica",
+    "year": 2004,
+    "kind": "series",
+    "synopsis": "After a devastating attack by robotic Cylons, the surviving humans flee through space searching for a new home. What makes us human?",
+    "genres": [
+      "Sci-Fi",
+      "Drama"
+    ],
+    "cast": [
+      "Edward James Olmos",
+      "Mary McDonnell",
+      "Katee Sackhoff"
+    ],
+    "director": "Ronald D. Moore",
+    "rating": 8.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/b7IfPFLfb7c5oBnBpMxT0tV3MO0.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1462332420958-a05d1e002413?w=1400&q=80",
+    "dna": {
+      "pacing": 0.6,
+      "tension_curve": [
+        0.4,
+        0.6,
+        0.72,
+        0.82,
+        0.9,
+        0.92
+      ],
+      "visual_style": "gritty space opera",
+      "audio_mood": "orchestral military",
+      "thematic_tags": [
+        "humanity",
+        "AI",
+        "religion",
+        "survival",
+        "democracy"
+      ],
+      "runtime_min": 44
+    }
+  },
+  {
+    "id": "the-shawshank-redemption-1994",
+    "title": "The Shawshank Redemption",
+    "year": 1994,
+    "kind": "film",
+    "synopsis": "Two imprisoned men bond over years, finding solace and eventual redemption through acts of decency. The most beloved film ever made.",
+    "genres": [
+      "Drama"
+    ],
+    "cast": [
+      "Tim Robbins",
+      "Morgan Freeman",
+      "Bob Gunton"
+    ],
+    "director": "Frank Darabont",
+    "rating": 9.3,
+    "poster_url": "https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1493612276216-ee3925520721?w=1400&q=80",
+    "dna": {
+      "pacing": 0.3,
+      "tension_curve": [
+        0.2,
+        0.35,
+        0.5,
+        0.6,
+        0.7,
+        0.85
+      ],
+      "visual_style": "warm naturalistic",
+      "audio_mood": "hopeful sweeping",
+      "thematic_tags": [
+        "hope",
+        "friendship",
+        "prison",
+        "freedom",
+        "patience"
+      ],
+      "runtime_min": 142
+    }
+  },
+  {
+    "id": "interstellar-2014",
+    "title": "Interstellar",
+    "year": 2014,
+    "kind": "film",
+    "synopsis": "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival. Love as a force of physics.",
+    "genres": [
+      "Sci-Fi",
+      "Drama",
+      "Adventure"
+    ],
+    "cast": [
+      "Matthew McConaughey",
+      "Anne Hathaway",
+      "Jessica Chastain"
+    ],
+    "director": "Christopher Nolan",
+    "rating": 8.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=1400&q=80",
+    "dna": {
+      "pacing": 0.55,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.68,
+        0.82,
+        0.92,
+        0.88
+      ],
+      "visual_style": "epic cosmic",
+      "audio_mood": "organ transcendent",
+      "thematic_tags": [
+        "space",
+        "fatherhood",
+        "time",
+        "love",
+        "climate"
+      ],
+      "runtime_min": 169
+    }
+  },
+  {
+    "id": "the-dark-knight-2008",
+    "title": "The Dark Knight",
+    "year": 2008,
+    "kind": "film",
+    "synopsis": "Batman faces the Joker, a criminal mastermind who wants to plunge Gotham City into anarchy. The superhero film that transcended the genre.",
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Christian Bale",
+      "Heath Ledger",
+      "Aaron Eckhart"
+    ],
+    "director": "Christopher Nolan",
+    "rating": 9.0,
+    "poster_url": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=1400&q=80",
+    "dna": {
+      "pacing": 0.78,
+      "tension_curve": [
+        0.4,
+        0.65,
+        0.82,
+        0.9,
+        0.95,
+        0.92
+      ],
+      "visual_style": "dark operatic",
+      "audio_mood": "percussive chaos",
+      "thematic_tags": [
+        "chaos",
+        "order",
+        "sacrifice",
+        "anarchy",
+        "heroism"
+      ],
+      "runtime_min": 152
+    }
+  },
+  {
+    "id": "pulp-fiction-1994",
+    "title": "Pulp Fiction",
+    "year": 1994,
+    "kind": "film",
+    "synopsis": "The lives of two mob hitmen, a boxer, and others intertwine in four tales of violence and redemption in Los Angeles.",
+    "genres": [
+      "Crime",
+      "Drama"
+    ],
+    "cast": [
+      "John Travolta",
+      "Samuel L. Jackson",
+      "Uma Thurman"
+    ],
+    "director": "Quentin Tarantino",
+    "rating": 8.9,
+    "poster_url": "https://image.tmdb.org/t/p/w500/d5iIlFn5s0ImszYzBPb8JPIfbXD.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1400&q=80",
+    "dna": {
+      "pacing": 0.65,
+      "tension_curve": [
+        0.4,
+        0.6,
+        0.72,
+        0.8,
+        0.75,
+        0.85
+      ],
+      "visual_style": "retro stylized",
+      "audio_mood": "eclectic surf soul",
+      "thematic_tags": [
+        "nonlinear",
+        "LA",
+        "crime",
+        "redemption",
+        "dialogue"
+      ],
+      "runtime_min": 154
+    }
+  },
+  {
+    "id": "no-country-for-old-men-2007",
+    "title": "No Country for Old Men",
+    "year": 2007,
+    "kind": "film",
+    "synopsis": "A hunter stumbles on a drug deal gone wrong and a briefcase full of money. Then Anton Chigurh comes looking for it.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Tommy Lee Jones",
+      "Javier Bardem",
+      "Josh Brolin"
+    ],
+    "director": "Coen Brothers",
+    "rating": 8.2,
+    "poster_url": "https://image.tmdb.org/t/p/w500/6d4yCHIGKfnP93oMFCyHFmOHKdo.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1509909756405-be0199881695?w=1400&q=80",
+    "dna": {
+      "pacing": 0.35,
+      "tension_curve": [
+        0.25,
+        0.45,
+        0.6,
+        0.75,
+        0.85,
+        0.88
+      ],
+      "visual_style": "arid neo western",
+      "audio_mood": "near silent dread",
+      "thematic_tags": [
+        "fate",
+        "violence",
+        "mortality",
+        "Texas",
+        "evil"
+      ],
+      "runtime_min": 122
+    }
+  },
+  {
+    "id": "whiplash-2014",
+    "title": "Whiplash",
+    "year": 2014,
+    "kind": "film",
+    "synopsis": "A young jazz drummer pushes himself to his absolute limits under the tutelage of a ruthless instructor. Greatness at any cost.",
+    "genres": [
+      "Drama",
+      "Music"
+    ],
+    "cast": [
+      "Miles Teller",
+      "J.K. Simmons",
+      "Paul Reiser"
+    ],
+    "director": "Damien Chazelle",
+    "rating": 8.5,
+    "poster_url": "https://image.tmdb.org/t/p/w500/7fn624j5lj3xTme2SgiLCeuedmO.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?w=1400&q=80",
+    "dna": {
+      "pacing": 0.85,
+      "tension_curve": [
+        0.4,
+        0.65,
+        0.8,
+        0.9,
+        0.97,
+        0.99
+      ],
+      "visual_style": "close claustrophobic",
+      "audio_mood": "jazz percussive intense",
+      "thematic_tags": [
+        "obsession",
+        "greatness",
+        "abuse",
+        "jazz",
+        "perfectionism"
+      ],
+      "runtime_min": 107
+    }
+  },
+  {
+    "id": "her-2013",
+    "title": "Her",
+    "year": 2013,
+    "kind": "film",
+    "synopsis": "A lonely writer develops an unlikely relationship with an operating system designed to meet his every need.",
+    "genres": [
+      "Sci-Fi",
+      "Romance",
+      "Drama"
+    ],
+    "cast": [
+      "Joaquin Phoenix",
+      "Scarlett Johansson",
+      "Amy Adams"
+    ],
+    "director": "Spike Jonze",
+    "rating": 8.0,
+    "poster_url": "https://image.tmdb.org/t/p/w500/eCOtqtfvn7mxGPCaHDdRRIxcIen.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80",
+    "dna": {
+      "pacing": 0.25,
+      "tension_curve": [
+        0.15,
+        0.25,
+        0.35,
+        0.45,
+        0.55,
+        0.5
+      ],
+      "visual_style": "warm pastel near future",
+      "audio_mood": "tender electronic",
+      "thematic_tags": [
+        "loneliness",
+        "AI love",
+        "technology",
+        "intimacy",
+        "near future"
+      ],
+      "runtime_min": 126
+    }
+  },
+  {
+    "id": "the-social-network-2010",
+    "title": "The Social Network",
+    "year": 2010,
+    "kind": "film",
+    "synopsis": "The story of the founding of Facebook and the lawsuits that followed. Fincher and Sorkin at their collaborative peak.",
+    "genres": [
+      "Drama",
+      "Biography"
+    ],
+    "cast": [
+      "Jesse Eisenberg",
+      "Andrew Garfield",
+      "Justin Timberlake"
+    ],
+    "director": "David Fincher",
+    "rating": 7.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/n0ybibhJtQ5icDqTp8eRytcIHso.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=1400&q=80",
+    "dna": {
+      "pacing": 0.72,
+      "tension_curve": [
+        0.4,
+        0.6,
+        0.72,
+        0.78,
+        0.82,
+        0.8
+      ],
+      "visual_style": "cold blue prestige",
+      "audio_mood": "propulsive electronic",
+      "thematic_tags": [
+        "ambition",
+        "betrayal",
+        "Silicon Valley",
+        "genius",
+        "friendship"
+      ],
+      "runtime_min": 120
+    }
+  },
+  {
+    "id": "arrival-2016",
+    "title": "Arrival",
+    "year": 2016,
+    "kind": "film",
+    "synopsis": "A linguist is recruited to communicate with alien beings after they arrive on Earth in mysterious vessels.",
+    "genres": [
+      "Sci-Fi",
+      "Drama",
+      "Mystery"
+    ],
+    "cast": [
+      "Amy Adams",
+      "Jeremy Renner",
+      "Forest Whitaker"
+    ],
+    "director": "Denis Villeneuve",
+    "rating": 7.9,
+    "poster_url": "https://image.tmdb.org/t/p/w500/x2FJsf1ElAgr63Y3PNPtJrcmpoe.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1400&q=80",
+    "dna": {
+      "pacing": 0.3,
+      "tension_curve": [
+        0.2,
+        0.35,
+        0.5,
+        0.6,
+        0.7,
+        0.8
+      ],
+      "visual_style": "grey meditative",
+      "audio_mood": "atmospheric choral",
+      "thematic_tags": [
+        "language",
+        "time",
+        "grief",
+        "first contact",
+        "motherhood"
+      ],
+      "runtime_min": 116
+    }
+  },
+  {
+    "id": "ex-machina-2014",
+    "title": "Ex Machina",
+    "year": 2014,
+    "kind": "film",
+    "synopsis": "A programmer is invited to administer the Turing test to an AI with a striking humanoid form.",
+    "genres": [
+      "Sci-Fi",
+      "Thriller",
+      "Drama"
+    ],
+    "cast": [
+      "Domhnall Gleeson",
+      "Alicia Vikander",
+      "Oscar Isaac"
+    ],
+    "director": "Alex Garland",
+    "rating": 7.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/btjBDFX4GIRmfhNwrJbYXS8IOBN.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80",
+    "dna": {
+      "pacing": 0.38,
+      "tension_curve": [
+        0.2,
+        0.38,
+        0.55,
+        0.7,
+        0.82,
+        0.9
+      ],
+      "visual_style": "glass minimalist",
+      "audio_mood": "electronic uncanny",
+      "thematic_tags": [
+        "AI",
+        "consciousness",
+        "manipulation",
+        "Turing test",
+        "isolation"
+      ],
+      "runtime_min": 108
+    }
+  },
+  {
+    "id": "gone-girl-2014",
+    "title": "Gone Girl",
+    "year": 2014,
+    "kind": "film",
+    "synopsis": "On their fifth wedding anniversary, Nick Dunne's wife Amy disappears. His suspicious behavior makes him the prime suspect.",
+    "genres": [
+      "Thriller",
+      "Drama",
+      "Mystery"
+    ],
+    "cast": [
+      "Ben Affleck",
+      "Rosamund Pike",
+      "Neil Patrick Harris"
+    ],
+    "director": "David Fincher",
+    "rating": 8.1,
+    "poster_url": "https://image.tmdb.org/t/p/w500/mrFpPrJKbpGVhyJRoIpfgH3MBGB.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=1400&q=80",
+    "dna": {
+      "pacing": 0.6,
+      "tension_curve": [
+        0.3,
+        0.55,
+        0.7,
+        0.82,
+        0.9,
+        0.88
+      ],
+      "visual_style": "suburban cold",
+      "audio_mood": "tense electronic",
+      "thematic_tags": [
+        "marriage",
+        "media",
+        "deception",
+        "suburban dread",
+        "performance"
+      ],
+      "runtime_min": 149
+    }
+  },
+  {
+    "id": "moonlight-2016",
+    "title": "Moonlight",
+    "year": 2016,
+    "kind": "film",
+    "synopsis": "A young Black man's journey through three defining chapters of his life in Miami. The most tenderly shot film of the decade.",
+    "genres": [
+      "Drama"
+    ],
+    "cast": [
+      "Mahershala Ali",
+      "Naomie Harris",
+      "Trevante Rhodes"
+    ],
+    "director": "Barry Jenkins",
+    "rating": 7.4,
+    "poster_url": "https://image.tmdb.org/t/p/w500/4KJHFMzDYiJkBXy1gnXgFIDzMdH.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1502209524164-acea936639a2?w=1400&q=80",
+    "dna": {
+      "pacing": 0.22,
+      "tension_curve": [
+        0.15,
+        0.25,
+        0.35,
+        0.45,
+        0.5,
+        0.55
+      ],
+      "visual_style": "lyrical saturated",
+      "audio_mood": "classical tender",
+      "thematic_tags": [
+        "identity",
+        "sexuality",
+        "race",
+        "Miami",
+        "coming of age"
+      ],
+      "runtime_min": 111
+    }
+  },
+  {
+    "id": "get-out-2017",
+    "title": "Get Out",
+    "year": 2017,
+    "kind": "film",
+    "synopsis": "A Black man visits his white girlfriend's family estate and discovers something terrifying. Horror as social commentary.",
+    "genres": [
+      "Horror",
+      "Thriller",
+      "Mystery"
+    ],
+    "cast": [
+      "Daniel Kaluuya",
+      "Allison Williams",
+      "Bradley Whitford"
+    ],
+    "director": "Jordan Peele",
+    "rating": 7.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/tFXcEccSQMf3lfhfXKSU9iRBpa3.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1560421683-6856ea585c78?w=1400&q=80",
+    "dna": {
+      "pacing": 0.55,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.65,
+        0.8,
+        0.92,
+        0.95
+      ],
+      "visual_style": "satirical suburban",
+      "audio_mood": "unsettling orchestral",
+      "thematic_tags": [
+        "racism",
+        "horror",
+        "social commentary",
+        "SUNKEN PLACE",
+        "liberal hypocrisy"
+      ],
+      "runtime_min": 104
+    }
+  },
+  {
+    "id": "midsommar-2019",
+    "title": "Midsommar",
+    "year": 2019,
+    "kind": "film",
+    "synopsis": "A couple travels to Sweden for a festival held once every 90 years. What appears idyllic reveals itself as something ancient and horrifying.",
+    "genres": [
+      "Horror",
+      "Drama",
+      "Mystery"
+    ],
+    "cast": [
+      "Florence Pugh",
+      "Jack Reynor",
+      "William Jackson Harper"
+    ],
+    "director": "Ari Aster",
+    "rating": 7.1,
+    "poster_url": "https://image.tmdb.org/t/p/w500/7LEI8ulZzO5gy9Ww2NVCrKmHeDZ.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?w=1400&q=80",
+    "dna": {
+      "pacing": 0.28,
+      "tension_curve": [
+        0.15,
+        0.3,
+        0.5,
+        0.65,
+        0.8,
+        0.88
+      ],
+      "visual_style": "bright pastoral horror",
+      "audio_mood": "folk dissonant",
+      "thematic_tags": [
+        "grief",
+        "folk horror",
+        "Sweden",
+        "relationships",
+        "ritual"
+      ],
+      "runtime_min": 148
+    }
+  },
+  {
+    "id": "drive-2011",
+    "title": "Drive",
+    "year": 2011,
+    "kind": "film",
+    "synopsis": "A stunt driver moonlights as a getaway driver and falls for his neighbor. Style, silence, and sudden violence.",
+    "genres": [
+      "Action",
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Ryan Gosling",
+      "Carey Mulligan",
+      "Bryan Cranston"
+    ],
+    "director": "Nicolas Winding Refn",
+    "rating": 7.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/602vevIygqd0B2ago4DqHNCoaAw.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?w=1400&q=80",
+    "dna": {
+      "pacing": 0.32,
+      "tension_curve": [
+        0.2,
+        0.35,
+        0.5,
+        0.65,
+        0.82,
+        0.88
+      ],
+      "visual_style": "neon neo noir",
+      "audio_mood": "synthwave melancholic",
+      "thematic_tags": [
+        "silence",
+        "LA",
+        "violence",
+        "longing",
+        "outsider"
+      ],
+      "runtime_min": 100
+    }
+  },
+  {
+    "id": "the-power-of-the-dog-2021",
+    "title": "The Power of the Dog",
+    "year": 2021,
+    "kind": "film",
+    "synopsis": "A charismatic rancher torments his brother's new wife and her son until unexpected events unfold.",
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Western"
+    ],
+    "cast": [
+      "Benedict Cumberbatch",
+      "Kirsten Dunst",
+      "Jesse Plemons"
+    ],
+    "director": "Jane Campion",
+    "rating": 6.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/ugzsOqBsxMMCCKjECGsXdGfWn7V.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1400&q=80",
+    "dna": {
+      "pacing": 0.25,
+      "tension_curve": [
+        0.15,
+        0.28,
+        0.42,
+        0.58,
+        0.7,
+        0.82
+      ],
+      "visual_style": "epic landscape intimate",
+      "audio_mood": "sparse western unnerving",
+      "thematic_tags": [
+        "toxic masculinity",
+        "repression",
+        "Montana",
+        "1920s",
+        "cruelty"
+      ],
+      "runtime_min": 126
+    }
+  },
+  {
+    "id": "aftersun-2022",
+    "title": "Aftersun",
+    "year": 2022,
+    "kind": "film",
+    "synopsis": "A young woman reflects on a shared holiday with her father twenty years earlier. Memory, loss, and what we don't see in the people we love.",
+    "genres": [
+      "Drama"
+    ],
+    "cast": [
+      "Paul Mescal",
+      "Frankie Corio"
+    ],
+    "director": "Charlotte Wells",
+    "rating": 7.3,
+    "poster_url": "https://image.tmdb.org/t/p/w500/4Ac7CGRMHC4MMi0yMJjBMkJRZqg.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=80",
+    "dna": {
+      "pacing": 0.18,
+      "tension_curve": [
+        0.1,
+        0.18,
+        0.25,
+        0.35,
+        0.48,
+        0.6
+      ],
+      "visual_style": "sun bleached intimate",
+      "audio_mood": "melancholic tender",
+      "thematic_tags": [
+        "memory",
+        "fatherhood",
+        "depression",
+        "Turkey",
+        "grief"
+      ],
+      "runtime_min": 96
+    }
+  },
+  {
+    "id": "the-banshees-of-inisherin-2022",
+    "title": "The Banshees of Inisherin",
+    "year": 2022,
+    "kind": "film",
+    "synopsis": "On a small island off the coast of Ireland, a man is devastated when his lifelong friend suddenly ends their friendship.",
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "cast": [
+      "Colin Farrell",
+      "Brendan Gleeson",
+      "Barry Keoghan"
+    ],
+    "director": "Martin McDonagh",
+    "rating": 7.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/4yFG6cSPaCaPhyJ1vtGOtMD7kNs.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1400&q=80",
+    "dna": {
+      "pacing": 0.3,
+      "tension_curve": [
+        0.2,
+        0.35,
+        0.5,
+        0.62,
+        0.72,
+        0.78
+      ],
+      "visual_style": "bleak beautiful irish",
+      "audio_mood": "folk mournful",
+      "thematic_tags": [
+        "friendship",
+        "spite",
+        "Ireland",
+        "Civil War",
+        "meaning"
+      ],
+      "runtime_min": 114
+    }
+  },
+  {
+    "id": "nightcrawler-2014",
+    "title": "Nightcrawler",
+    "year": 2014,
+    "kind": "film",
+    "synopsis": "An ambitious and morally hollow man discovers a way into the world of LA crime journalism. Jake Gyllenhaal's most unsettling performance.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Jake Gyllenhaal",
+      "Rene Russo",
+      "Riz Ahmed"
+    ],
+    "director": "Dan Gilroy",
+    "rating": 7.9,
+    "poster_url": "https://image.tmdb.org/t/p/w500/vNFMhbMsFmFfMnpQ1CVlCANzQ0j.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?w=1400&q=80",
+    "dna": {
+      "pacing": 0.68,
+      "tension_curve": [
+        0.3,
+        0.52,
+        0.68,
+        0.82,
+        0.9,
+        0.92
+      ],
+      "visual_style": "nocturnal neon",
+      "audio_mood": "electronic predatory",
+      "thematic_tags": [
+        "sociopathy",
+        "LA",
+        "media",
+        "ambition",
+        "night"
+      ],
+      "runtime_min": 117
+    }
+  },
+  {
+    "id": "roma-2018",
+    "title": "Roma",
+    "year": 2018,
+    "kind": "film",
+    "synopsis": "A year in the life of a middle-class family in Mexico City and their live-in housekeeper. Alfonso Cuarón's most personal film.",
+    "genres": [
+      "Drama"
+    ],
+    "cast": [
+      "Yalitza Aparicio",
+      "Marina de Tavira"
+    ],
+    "director": "Alfonso Cuarón",
+    "rating": 7.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/dtWAkBTJFMwLCTIebiEuoJFfXbS.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1400&q=80",
+    "dna": {
+      "pacing": 0.2,
+      "tension_curve": [
+        0.1,
+        0.2,
+        0.3,
+        0.45,
+        0.6,
+        0.65
+      ],
+      "visual_style": "black white neorealist",
+      "audio_mood": "ambient city life",
+      "thematic_tags": [
+        "class",
+        "Mexico City",
+        "1970s",
+        "domesticity",
+        "women"
+      ],
+      "runtime_min": 135
+    }
+  },
+  {
+    "id": "fleabag-s1-2016",
+    "title": "Fleabag",
+    "year": 2016,
+    "kind": "series",
+    "synopsis": "A young woman navigates modern life in London with painfully sharp wit, breaking the fourth wall to take us into her confidence.",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "cast": [
+      "Phoebe Waller-Bridge",
+      "Sian Clifford",
+      "Olivia Colman"
+    ],
+    "director": "Phoebe Waller-Bridge",
+    "rating": 8.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/7SMxfbXNB29JWDxiDMp7eKmLMOb.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1400&q=80",
+    "dna": {
+      "pacing": 0.7,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.62,
+        0.72,
+        0.8,
+        0.82
+      ],
+      "visual_style": "direct address london",
+      "audio_mood": "witty sparse",
+      "thematic_tags": [
+        "grief",
+        "women",
+        "fourth wall",
+        "sex",
+        "guilt"
+      ],
+      "runtime_min": 25
+    }
+  },
+  {
+    "id": "atlanta-s1-2016",
+    "title": "Atlanta",
+    "year": 2016,
+    "kind": "series",
+    "synopsis": "Two cousins navigate Atlanta's music scene while trying to improve their lives and the lives of their family.",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "cast": [
+      "Donald Glover",
+      "Brian Tyree Henry",
+      "Lakeith Stanfield"
+    ],
+    "director": "Donald Glover",
+    "rating": 8.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/8PGjCQlQ5hAJePnNEHpBa0OUFS3.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400&q=80",
+    "dna": {
+      "pacing": 0.5,
+      "tension_curve": [
+        0.3,
+        0.45,
+        0.58,
+        0.65,
+        0.72,
+        0.75
+      ],
+      "visual_style": "surreal naturalistic",
+      "audio_mood": "hip hop ambient",
+      "thematic_tags": [
+        "race",
+        "music industry",
+        "absurdism",
+        "Atlanta",
+        "Black experience"
+      ],
+      "runtime_min": 25
+    }
+  },
+  {
+    "id": "barry-s1-2018",
+    "title": "Barry",
+    "year": 2018,
+    "kind": "series",
+    "synopsis": "A hitman from the Midwest moves to LA, falls in love with acting, and tries to leave his murderous past behind.",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Bill Hader",
+      "Henry Winkler",
+      "Sarah Goldberg"
+    ],
+    "director": "Bill Hader",
+    "rating": 8.4,
+    "poster_url": "https://image.tmdb.org/t/p/w500/qKHSLSQNhHXkJT6KNHWEKsocSF3.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1400&q=80",
+    "dna": {
+      "pacing": 0.6,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.65,
+        0.75,
+        0.85,
+        0.88
+      ],
+      "visual_style": "genre blending LA",
+      "audio_mood": "darkly comic tense",
+      "thematic_tags": [
+        "hitman",
+        "acting",
+        "identity",
+        "trauma",
+        "LA"
+      ],
+      "runtime_min": 30
+    }
+  },
+  {
+    "id": "ted-lasso-s1-2020",
+    "title": "Ted Lasso",
+    "year": 2020,
+    "kind": "series",
+    "synopsis": "An American football coach is hired to manage an English soccer team despite knowing nothing about the sport. Radical optimism as superpower.",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "cast": [
+      "Jason Sudeikis",
+      "Hannah Waddingham",
+      "Brett Goldstein"
+    ],
+    "director": "Jason Sudeikis",
+    "rating": 8.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/3gMIGxFMIQh06j4MsBQ96VjuVlD.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=1400&q=80",
+    "dna": {
+      "pacing": 0.55,
+      "tension_curve": [
+        0.3,
+        0.45,
+        0.55,
+        0.6,
+        0.65,
+        0.7
+      ],
+      "visual_style": "warm british",
+      "audio_mood": "uplifting folk pop",
+      "thematic_tags": [
+        "kindness",
+        "football",
+        "mental health",
+        "belief",
+        "leadership"
+      ],
+      "runtime_min": 45
+    }
+  },
+  {
+    "id": "the-good-place-s1-2016",
+    "title": "The Good Place",
+    "year": 2016,
+    "kind": "series",
+    "synopsis": "A woman accidentally ends up in a utopian afterlife and must conceal her true nature while learning what it means to be good.",
+    "genres": [
+      "Comedy",
+      "Fantasy"
+    ],
+    "cast": [
+      "Kristen Bell",
+      "Ted Danson",
+      "William Jackson Harper"
+    ],
+    "director": "Michael Schur",
+    "rating": 8.2,
+    "poster_url": "https://image.tmdb.org/t/p/w500/yOEqnIZfBhpqKoHf7MxUYWJvWJq.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1400&q=80",
+    "dna": {
+      "pacing": 0.65,
+      "tension_curve": [
+        0.35,
+        0.5,
+        0.6,
+        0.7,
+        0.75,
+        0.72
+      ],
+      "visual_style": "bright surreal",
+      "audio_mood": "playful orchestral",
+      "thematic_tags": [
+        "philosophy",
+        "ethics",
+        "afterlife",
+        "self improvement",
+        "community"
+      ],
+      "runtime_min": 22
+    }
+  },
+  {
+    "id": "schitts-creek-s1-2015",
+    "title": "Schitt's Creek",
+    "year": 2015,
+    "kind": "series",
+    "synopsis": "A wealthy family loses everything and is forced to move to a small town they once bought as a joke.",
+    "genres": [
+      "Comedy"
+    ],
+    "cast": [
+      "Eugene Levy",
+      "Catherine O'Hara",
+      "Dan Levy"
+    ],
+    "director": "Dan Levy",
+    "rating": 8.5,
+    "poster_url": "https://image.tmdb.org/t/p/w500/eSVTpUsGVtNLOfv3k5r8PoWNqfH.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=1400&q=80",
+    "dna": {
+      "pacing": 0.5,
+      "tension_curve": [
+        0.25,
+        0.38,
+        0.48,
+        0.55,
+        0.6,
+        0.65
+      ],
+      "visual_style": "warm small town",
+      "audio_mood": "quirky heartfelt",
+      "thematic_tags": [
+        "class",
+        "acceptance",
+        "family",
+        "small town",
+        "growth"
+      ],
+      "runtime_min": 22
+    }
+  },
+  {
+    "id": "hereditary-2018",
+    "title": "Hereditary",
+    "year": 2018,
+    "kind": "film",
+    "synopsis": "After a family's matriarch dies, her daughter and grandchildren unravel dark secrets. The most disturbing horror film in years.",
+    "genres": [
+      "Horror",
+      "Drama",
+      "Mystery"
+    ],
+    "cast": [
+      "Toni Collette",
+      "Milly Shapiro",
+      "Gabriel Byrne"
+    ],
+    "director": "Ari Aster",
+    "rating": 7.3,
+    "poster_url": "https://image.tmdb.org/t/p/w500/5gGsRXMNcyW93SnTsGGRdGPJVZw.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?w=1400&q=80",
+    "dna": {
+      "pacing": 0.38,
+      "tension_curve": [
+        0.2,
+        0.4,
+        0.6,
+        0.78,
+        0.9,
+        0.98
+      ],
+      "visual_style": "domestic dread",
+      "audio_mood": "atonal strings",
+      "thematic_tags": [
+        "grief",
+        "family trauma",
+        "occult",
+        "miniatures",
+        "horror"
+      ],
+      "runtime_min": 127
+    }
+  },
+  {
+    "id": "the-lighthouse-2019",
+    "title": "The Lighthouse",
+    "year": 2019,
+    "kind": "film",
+    "synopsis": "Two lighthouse keepers are stranded on a remote New England island at the end of the 19th century. Madness, mythology, and the sea.",
+    "genres": [
+      "Horror",
+      "Drama",
+      "Mystery"
+    ],
+    "cast": [
+      "Robert Pattinson",
+      "Willem Dafoe"
+    ],
+    "director": "Robert Eggers",
+    "rating": 7.5,
+    "poster_url": "https://image.tmdb.org/t/p/w500/3P52oz9HPQdxFbIYe1inZlcmMEK.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1400&q=80",
+    "dna": {
+      "pacing": 0.3,
+      "tension_curve": [
+        0.2,
+        0.38,
+        0.55,
+        0.68,
+        0.82,
+        0.9
+      ],
+      "visual_style": "black white expressionist",
+      "audio_mood": "foghorn orchestral",
+      "thematic_tags": [
+        "isolation",
+        "madness",
+        "mythology",
+        "power",
+        "sea"
+      ],
+      "runtime_min": 110
+    }
+  },
+  {
+    "id": "squid-game-s1-2021",
+    "title": "Squid Game",
+    "year": 2021,
+    "kind": "series",
+    "synopsis": "Hundreds of cash-strapped contestants accept an invitation to compete in children's games for a prize. Losers are eliminated — permanently.",
+    "genres": [
+      "Thriller",
+      "Drama",
+      "Sci-Fi"
+    ],
+    "cast": [
+      "Lee Jung-jae",
+      "Park Hae-soo",
+      "Oh Yeong-su"
+    ],
+    "director": "Hwang Dong-hyuk",
+    "rating": 8.0,
+    "poster_url": "https://image.tmdb.org/t/p/w500/dDlEmu3EZ0Pgg93K2SVNLCjCSvE.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1400&q=80",
+    "dna": {
+      "pacing": 0.75,
+      "tension_curve": [
+        0.4,
+        0.62,
+        0.78,
+        0.88,
+        0.94,
+        0.9
+      ],
+      "visual_style": "pastel brutal",
+      "audio_mood": "folk horror blend",
+      "thematic_tags": [
+        "class warfare",
+        "survival",
+        "debt",
+        "Korea",
+        "games"
+      ],
+      "runtime_min": 55
+    }
+  },
+  {
+    "id": "money-heist-s1-2017",
+    "title": "Money Heist",
+    "year": 2017,
+    "kind": "series",
+    "synopsis": "A criminal mastermind recruits eight thieves to carry out the greatest heist in history — taking hostages inside the Royal Mint of Spain.",
+    "genres": [
+      "Action",
+      "Crime",
+      "Drama"
+    ],
+    "cast": [
+      "Álvaro Morte",
+      "Úrsula Corberó",
+      "Pedro Alonso"
+    ],
+    "director": "Álex Pina",
+    "rating": 8.2,
+    "poster_url": "https://image.tmdb.org/t/p/w500/reEMJA1OiYo2wVqGe5YDdVPGVlg.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1400&q=80",
+    "dna": {
+      "pacing": 0.78,
+      "tension_curve": [
+        0.4,
+        0.62,
+        0.75,
+        0.85,
+        0.9,
+        0.92
+      ],
+      "visual_style": "stylized spanish",
+      "audio_mood": "bella ciao energetic",
+      "thematic_tags": [
+        "heist",
+        "Spain",
+        "resistance",
+        "love",
+        "chaos"
+      ],
+      "runtime_min": 45
+    }
+  },
+  {
+    "id": "lupin-s1-2021",
+    "title": "Lupin",
+    "year": 2021,
+    "kind": "series",
+    "synopsis": "A man uses the fictional gentleman thief Arsène Lupin as his inspiration to seek revenge for injustice done to his father.",
+    "genres": [
+      "Crime",
+      "Mystery",
+      "Drama"
+    ],
+    "cast": [
+      "Omar Sy",
+      "Ludivine Sagnier",
+      "Clotilde Hesme"
+    ],
+    "director": "Louis Leterrier",
+    "rating": 7.5,
+    "poster_url": "https://image.tmdb.org/t/p/w500/sgxawbFB5Vi5OkPWQLNfl3dvkNJ.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1400&q=80",
+    "dna": {
+      "pacing": 0.72,
+      "tension_curve": [
+        0.35,
+        0.55,
+        0.7,
+        0.8,
+        0.88,
+        0.85
+      ],
+      "visual_style": "parisian stylish",
+      "audio_mood": "jazzy playful",
+      "thematic_tags": [
+        "heist",
+        "France",
+        "race",
+        "justice",
+        "con artist"
+      ],
+      "runtime_min": 45
+    }
+  },
+  {
+    "id": "kingdom-s1-2019",
+    "title": "Kingdom",
+    "year": 2019,
+    "kind": "series",
+    "synopsis": "A Joseon-era Korean prince investigates a mysterious plague while navigating palace politics. Zombie horror meets historical epic.",
+    "genres": [
+      "Horror",
+      "Drama",
+      "History"
+    ],
+    "cast": [
+      "Ju Ji-hoon",
+      "Bae Doona",
+      "Ryu Seung-ryong"
+    ],
+    "director": "Kim Seong-hun",
+    "rating": 8.3,
+    "poster_url": "https://image.tmdb.org/t/p/w500/oKgi5bjNBzBhSkBLBRFGWFJFTPe.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1400&q=80",
+    "dna": {
+      "pacing": 0.7,
+      "tension_curve": [
+        0.35,
+        0.58,
+        0.72,
+        0.85,
+        0.92,
+        0.9
+      ],
+      "visual_style": "historical epic",
+      "audio_mood": "traditional intense",
+      "thematic_tags": [
+        "zombie",
+        "Joseon",
+        "politics",
+        "class",
+        "Korea"
+      ],
+      "runtime_min": 50
+    }
+  },
+  {
+    "id": "all-quiet-western-front-2022",
+    "title": "All Quiet on the Western Front",
+    "year": 2022,
+    "kind": "film",
+    "synopsis": "A young German soldier fights on the Western Front during World War I and discovers the true face of war.",
+    "genres": [
+      "War",
+      "Drama",
+      "History"
+    ],
+    "cast": [
+      "Felix Kammerer",
+      "Albrecht Schuch",
+      "Daniel Brühl"
+    ],
+    "director": "Edward Berger",
+    "rating": 7.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/hgMmCOr3WDSHOpxAFzuSiT8rBvZ.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=1400&q=80",
+    "dna": {
+      "pacing": 0.6,
+      "tension_curve": [
+        0.3,
+        0.55,
+        0.72,
+        0.85,
+        0.9,
+        0.92
+      ],
+      "visual_style": "gritty realistic war",
+      "audio_mood": "industrial mournful",
+      "thematic_tags": [
+        "WWI",
+        "futility of war",
+        "youth",
+        "Germany",
+        "anti war"
+      ],
+      "runtime_min": 147
+    }
+  },
+  {
+    "id": "mad-max-fury-road-2015",
+    "title": "Mad Max: Fury Road",
+    "year": 2015,
+    "kind": "film",
+    "synopsis": "In a post-apocalyptic wasteland, a woman rebels against a tyrannical ruler in a high-octane road war. The greatest action film of the 21st century.",
+    "genres": [
+      "Action",
+      "Sci-Fi",
+      "Adventure"
+    ],
+    "cast": [
+      "Tom Hardy",
+      "Charlize Theron",
+      "Nicholas Hoult"
+    ],
+    "director": "George Miller",
+    "rating": 8.1,
+    "poster_url": "https://image.tmdb.org/t/p/w500/kqjL17yufvn9OVLyXYpvtyrFfak.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1509909756405-be0199881695?w=1400&q=80",
+    "dna": {
+      "pacing": 0.97,
+      "tension_curve": [
+        0.6,
+        0.8,
+        0.9,
+        0.95,
+        0.97,
+        0.99
+      ],
+      "visual_style": "post apocalyptic saturated",
+      "audio_mood": "electric guitar percussion",
+      "thematic_tags": [
+        "feminism",
+        "survival",
+        "chase",
+        "dystopia",
+        "spectacle"
+      ],
+      "runtime_min": 120
+    }
+  },
+  {
+    "id": "mission-impossible-fallout-2018",
+    "title": "Mission: Impossible — Fallout",
+    "year": 2018,
+    "kind": "film",
+    "synopsis": "Ethan Hunt and his team race against time to prevent a nuclear catastrophe. The gold standard of practical action filmmaking.",
+    "genres": [
+      "Action",
+      "Thriller",
+      "Adventure"
+    ],
+    "cast": [
+      "Tom Cruise",
+      "Henry Cavill",
+      "Ving Rhames"
+    ],
+    "director": "Christopher McQuarrie",
+    "rating": 7.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/AkJQpZp9WoNdj7pLYSj1L0RcMMN.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1551009175-8a68da93d5f9?w=1400&q=80",
+    "dna": {
+      "pacing": 0.92,
+      "tension_curve": [
+        0.5,
+        0.7,
+        0.82,
+        0.9,
+        0.95,
+        0.97
+      ],
+      "visual_style": "practical global epic",
+      "audio_mood": "orchestral propulsive",
+      "thematic_tags": [
+        "espionage",
+        "sacrifice",
+        "practical stunts",
+        "nuclear",
+        "globetrotting"
+      ],
+      "runtime_min": 147
+    }
+  },
+  {
+    "id": "the-act-of-killing-2012",
+    "title": "The Act of Killing",
+    "year": 2012,
+    "kind": "film",
+    "synopsis": "The men who led Indonesian death squads in 1965 are asked to recreate their atrocities in the style of their favourite films.",
+    "genres": [
+      "Documentary"
+    ],
+    "cast": [
+      "Anwar Congo"
+    ],
+    "director": "Joshua Oppenheimer",
+    "rating": 8.2,
+    "poster_url": "https://image.tmdb.org/t/p/w500/n0p2smH5TXFkVlVKEAHsXKFaGFX.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1503444200347-fa86187a2797?w=1400&q=80",
+    "dna": {
+      "pacing": 0.3,
+      "tension_curve": [
+        0.2,
+        0.35,
+        0.5,
+        0.65,
+        0.75,
+        0.8
+      ],
+      "visual_style": "surreal documentary",
+      "audio_mood": "dissonant theatrical",
+      "thematic_tags": [
+        "Indonesia",
+        "genocide",
+        "self delusion",
+        "performance",
+        "impunity"
+      ],
+      "runtime_min": 115
+    }
+  },
+  {
+    "id": "icarus-2017",
+    "title": "Icarus",
+    "year": 2017,
+    "kind": "film",
+    "synopsis": "A filmmaker's personal doping experiment accidentally exposes the world's largest state-sponsored doping program.",
+    "genres": [
+      "Documentary",
+      "Thriller"
+    ],
+    "cast": [
+      "Bryan Fogel",
+      "Grigory Rodchenkov"
+    ],
+    "director": "Bryan Fogel",
+    "rating": 7.9,
+    "poster_url": "https://image.tmdb.org/t/p/w500/r8JpFlbzjGGkB7l0IUAK0kNWFGc.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?w=1400&q=80",
+    "dna": {
+      "pacing": 0.65,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.68,
+        0.82,
+        0.9,
+        0.88
+      ],
+      "visual_style": "documentary thriller",
+      "audio_mood": "tense investigative",
+      "thematic_tags": [
+        "doping",
+        "Russia",
+        "Olympics",
+        "whistleblower",
+        "conspiracy"
+      ],
+      "runtime_min": 96
+    }
+  },
+  {
+    "id": "julie-and-julia-2009",
+    "title": "Julie & Julia",
+    "year": 2009,
+    "kind": "film",
+    "synopsis": "The life of Julia Child in the 1950s and a blogger who decides to cook all 524 recipes in Child's cookbook in 365 days.",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Romance"
+    ],
+    "cast": [
+      "Meryl Streep",
+      "Amy Adams",
+      "Stanley Tucci"
+    ],
+    "director": "Nora Ephron",
+    "rating": 7.0,
+    "poster_url": "https://image.tmdb.org/t/p/w500/pqPhOy0LxDN9O1TrNmLvEeacPqm.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400&q=80",
+    "dna": {
+      "pacing": 0.45,
+      "tension_curve": [
+        0.2,
+        0.3,
+        0.4,
+        0.5,
+        0.55,
+        0.58
+      ],
+      "visual_style": "warm culinary",
+      "audio_mood": "joyful light",
+      "thematic_tags": [
+        "food",
+        "ambition",
+        "France",
+        "1950s",
+        "blogging"
+      ],
+      "runtime_min": 123
+    }
+  },
+  {
+    "id": "coda-2021",
+    "title": "CODA",
+    "year": 2021,
+    "kind": "film",
+    "synopsis": "The only hearing child of a deaf family must choose between her love of music and her family's fishing business.",
+    "genres": [
+      "Drama",
+      "Music",
+      "Comedy"
+    ],
+    "cast": [
+      "Emilia Jones",
+      "Troy Kotsur",
+      "Marlee Matlin"
+    ],
+    "director": "Sian Heder",
+    "rating": 7.9,
+    "poster_url": "https://image.tmdb.org/t/p/w500/BzVjmm8l23rPsijLiNLUzuQtyd.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1400&q=80",
+    "dna": {
+      "pacing": 0.4,
+      "tension_curve": [
+        0.2,
+        0.35,
+        0.5,
+        0.6,
+        0.72,
+        0.8
+      ],
+      "visual_style": "naturalistic warm",
+      "audio_mood": "folk emotional",
+      "thematic_tags": [
+        "deaf culture",
+        "family",
+        "music",
+        "belonging",
+        "Massachusetts"
+      ],
+      "runtime_min": 112
+    }
+  },
+  {
+    "id": "the-grand-budapest-hotel-2014",
+    "title": "The Grand Budapest Hotel",
+    "year": 2014,
+    "kind": "film",
+    "synopsis": "The adventures of a legendary concierge and his protégé in a fictional European country between the World Wars.",
+    "genres": [
+      "Comedy",
+      "Drama",
+      "Adventure"
+    ],
+    "cast": [
+      "Ralph Fiennes",
+      "Tony Revolori",
+      "Tilda Swinton"
+    ],
+    "director": "Wes Anderson",
+    "rating": 8.1,
+    "poster_url": "https://image.tmdb.org/t/p/w500/eWdyYQreja6JGCzqHWXpWHDrrPo.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=1400&q=80",
+    "dna": {
+      "pacing": 0.72,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.65,
+        0.75,
+        0.82,
+        0.8
+      ],
+      "visual_style": "symmetrical pastel",
+      "audio_mood": "folk orchestral whimsical",
+      "thematic_tags": [
+        "nostalgia",
+        "Europe",
+        "fascism",
+        "loyalty",
+        "style"
+      ],
+      "runtime_min": 99
+    }
+  },
+  {
+    "id": "arcane-s1-2021",
+    "title": "Arcane",
+    "year": 2021,
+    "kind": "series",
+    "synopsis": "Set in the utopian region of Piltover and the oppressed underground of Zaun, the series follows the origins of two legendary champions.",
+    "genres": [
+      "Animation",
+      "Action",
+      "Fantasy"
+    ],
+    "cast": [
+      "Hailee Steinfeld",
+      "Ella Purnell",
+      "Kevin Alejandro"
+    ],
+    "director": "Pascal Charrue",
+    "rating": 9.0,
+    "poster_url": "https://image.tmdb.org/t/p/w500/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1509909756405-be0199881695?w=1400&q=80",
+    "dna": {
+      "pacing": 0.7,
+      "tension_curve": [
+        0.35,
+        0.55,
+        0.72,
+        0.85,
+        0.92,
+        0.95
+      ],
+      "visual_style": "painterly animation",
+      "audio_mood": "indie orchestral hybrid",
+      "thematic_tags": [
+        "sisters",
+        "class",
+        "revolution",
+        "technology",
+        "League of Legends"
+      ],
+      "runtime_min": 42
+    }
+  },
+  {
+    "id": "spirited-away-2001",
+    "title": "Spirited Away",
+    "year": 2001,
+    "kind": "film",
+    "synopsis": "A young girl wanders into a magical spirit world where her parents have been transformed into pigs.",
+    "genres": [
+      "Animation",
+      "Fantasy",
+      "Adventure"
+    ],
+    "cast": [
+      "Daveigh Chase",
+      "Suzanne Pleshette"
+    ],
+    "director": "Hayao Miyazaki",
+    "rating": 8.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/39wmItIWsg5sZMyRUHLkWBcuVCM.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1400&q=80",
+    "dna": {
+      "pacing": 0.5,
+      "tension_curve": [
+        0.3,
+        0.45,
+        0.6,
+        0.7,
+        0.75,
+        0.8
+      ],
+      "visual_style": "lush hand drawn",
+      "audio_mood": "orchestral wonder",
+      "thematic_tags": [
+        "spirit world",
+        "Japan",
+        "work",
+        "childhood",
+        "transformation"
+      ],
+      "runtime_min": 125
+    }
+  },
+  {
+    "id": "fargo-s1-2014",
+    "title": "Fargo",
+    "year": 2014,
+    "kind": "series",
+    "synopsis": "A meek insurance salesman meets a mysterious stranger who changes his life forever in a small Minnesota town. Cohen Brothers tone, perfectly transplanted.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Billy Bob Thornton",
+      "Martin Freeman",
+      "Allison Tolman"
+    ],
+    "director": "Noah Hawley",
+    "rating": 8.9,
+    "poster_url": "https://image.tmdb.org/t/p/w500/6U1iC8KnBHjRpSCijtkMGJCHMqf.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1400&q=80",
+    "dna": {
+      "pacing": 0.5,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.65,
+        0.78,
+        0.88,
+        0.92
+      ],
+      "visual_style": "snow drenched noir",
+      "audio_mood": "folk ominous",
+      "thematic_tags": [
+        "Minnesota",
+        "violence",
+        "greed",
+        "banality of evil",
+        "snow"
+      ],
+      "runtime_min": 48
+    }
+  },
+  {
+    "id": "the-americans-s1-2013",
+    "title": "The Americans",
+    "year": 2013,
+    "kind": "series",
+    "synopsis": "Two Soviet KGB officers pose as an American married couple in suburban Washington DC during the Cold War.",
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Spy"
+    ],
+    "cast": [
+      "Keri Russell",
+      "Matthew Rhys",
+      "Noah Emmerich"
+    ],
+    "director": "Joe Weisberg",
+    "rating": 8.4,
+    "poster_url": "https://image.tmdb.org/t/p/w500/5dZkuXiWpNIWi5jJpVVOVimqR0P.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1558980394-34764db076b4?w=1400&q=80",
+    "dna": {
+      "pacing": 0.48,
+      "tension_curve": [
+        0.3,
+        0.48,
+        0.62,
+        0.74,
+        0.84,
+        0.9
+      ],
+      "visual_style": "80s suburban paranoid",
+      "audio_mood": "cold war tense",
+      "thematic_tags": [
+        "Cold War",
+        "identity",
+        "marriage",
+        "espionage",
+        "1980s"
+      ],
+      "runtime_min": 46
+    }
+  },
+  {
+    "id": "justified-s1-2010",
+    "title": "Justified",
+    "year": 2010,
+    "kind": "series",
+    "synopsis": "A US Marshal with a quick-draw reputation is reassigned to his rural Kentucky hometown, where old acquaintances make his job complicated.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Western"
+    ],
+    "cast": [
+      "Timothy Olyphant",
+      "Walton Goggins",
+      "Nick Searcy"
+    ],
+    "director": "Graham Yost",
+    "rating": 8.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/iHn3NOKnKgMDOFi0CfGjOFRqbBd.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1400&q=80",
+    "dna": {
+      "pacing": 0.6,
+      "tension_curve": [
+        0.35,
+        0.55,
+        0.68,
+        0.78,
+        0.86,
+        0.9
+      ],
+      "visual_style": "rural modern western",
+      "audio_mood": "bluegrass cool",
+      "thematic_tags": [
+        "Kentucky",
+        "marshals",
+        "coal country",
+        "wit",
+        "lawmen"
+      ],
+      "runtime_min": 44
+    }
+  },
+  {
+    "id": "narcos-s1-2015",
+    "title": "Narcos",
+    "year": 2015,
+    "kind": "series",
+    "synopsis": "The story of the rise and fall of cocaine kingpin Pablo Escobar and the DEA agents who hunted him.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "History"
+    ],
+    "cast": [
+      "Wagner Moura",
+      "Boyd Holbrook",
+      "Pedro Pascal"
+    ],
+    "director": "Chris Brancato",
+    "rating": 8.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/rTmal9fDbwh5F0waol2hq35U4ah.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1400&q=80",
+    "dna": {
+      "pacing": 0.65,
+      "tension_curve": [
+        0.35,
+        0.55,
+        0.7,
+        0.82,
+        0.9,
+        0.92
+      ],
+      "visual_style": "documentary drama colombia",
+      "audio_mood": "latin tense",
+      "thematic_tags": [
+        "Escobar",
+        "Colombia",
+        "cocaine",
+        "DEA",
+        "1980s"
+      ],
+      "runtime_min": 50
+    }
+  },
+  {
+    "id": "hannibal-s1-2013",
+    "title": "Hannibal",
+    "year": 2013,
+    "kind": "series",
+    "synopsis": "FBI profiler Will Graham consults with psychiatrist Hannibal Lecter. The most visually beautiful horror series ever made.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Horror"
+    ],
+    "cast": [
+      "Hugh Dancy",
+      "Mads Mikkelsen",
+      "Laurence Fishburne"
+    ],
+    "director": "Bryan Fuller",
+    "rating": 8.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/o5Lz5BWbkBdRTzR2NhKqLBaxrqk.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?w=1400&q=80",
+    "dna": {
+      "pacing": 0.4,
+      "tension_curve": [
+        0.25,
+        0.42,
+        0.58,
+        0.72,
+        0.82,
+        0.88
+      ],
+      "visual_style": "baroque horror beautiful",
+      "audio_mood": "classical predatory",
+      "thematic_tags": [
+        "cannibalism",
+        "profiling",
+        "beauty",
+        "manipulation",
+        "psychology"
+      ],
+      "runtime_min": 44
+    }
+  },
+  {
+    "id": "fight-club-1999",
+    "title": "Fight Club",
+    "year": 1999,
+    "kind": "film",
+    "synopsis": "An insomniac office worker forms an underground fight club with a soap salesman. Fincher's anarchic masterwork.",
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Brad Pitt",
+      "Edward Norton",
+      "Helena Bonham Carter"
+    ],
+    "director": "David Fincher",
+    "rating": 8.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=1400&q=80",
+    "dna": {
+      "pacing": 0.75,
+      "tension_curve": [
+        0.3,
+        0.55,
+        0.72,
+        0.85,
+        0.92,
+        0.95
+      ],
+      "visual_style": "industrial grungy",
+      "audio_mood": "alt rock propulsive",
+      "thematic_tags": [
+        "masculinity",
+        "consumerism",
+        "identity",
+        "anarchy",
+        "dissociation"
+      ],
+      "runtime_min": 139
+    }
+  },
+  {
+    "id": "requiem-for-a-dream-2000",
+    "title": "Requiem for a Dream",
+    "year": 2000,
+    "kind": "film",
+    "synopsis": "The drug-induced fantasies of four Coney Island characters spiral into addiction and destruction.",
+    "genres": [
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Ellen Burstyn",
+      "Jared Leto",
+      "Jennifer Connelly"
+    ],
+    "director": "Darren Aronofsky",
+    "rating": 8.3,
+    "poster_url": "https://image.tmdb.org/t/p/w500/nOd6vjEmzCT0k4VYqsA2hwyi87C.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1400&q=80",
+    "dna": {
+      "pacing": 0.82,
+      "tension_curve": [
+        0.3,
+        0.55,
+        0.75,
+        0.88,
+        0.95,
+        0.98
+      ],
+      "visual_style": "fragmented visceral",
+      "audio_mood": "hip hop strings chaos",
+      "thematic_tags": [
+        "addiction",
+        "dreams",
+        "destruction",
+        "NYC",
+        "bodies"
+      ],
+      "runtime_min": 102
+    }
+  },
+  {
+    "id": "eternal-sunshine-2004",
+    "title": "Eternal Sunshine of the Spotless Mind",
+    "year": 2004,
+    "kind": "film",
+    "synopsis": "A couple undergo a medical procedure to have each other erased from their memories after a painful breakup.",
+    "genres": [
+      "Sci-Fi",
+      "Romance",
+      "Drama"
+    ],
+    "cast": [
+      "Jim Carrey",
+      "Kate Winslet",
+      "Kirsten Dunst"
+    ],
+    "director": "Michel Gondry",
+    "rating": 8.3,
+    "poster_url": "https://image.tmdb.org/t/p/w500/5MwkWH9tYHv3mV9OqYdjuoBrUTy.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?w=1400&q=80",
+    "dna": {
+      "pacing": 0.45,
+      "tension_curve": [
+        0.2,
+        0.38,
+        0.55,
+        0.65,
+        0.72,
+        0.7
+      ],
+      "visual_style": "dreamlike fragmented",
+      "audio_mood": "delicate piano",
+      "thematic_tags": [
+        "memory",
+        "love",
+        "loss",
+        "sci fi romance",
+        "non linear"
+      ],
+      "runtime_min": 108
+    }
+  },
+  {
+    "id": "there-will-be-blood-2007",
+    "title": "There Will Be Blood",
+    "year": 2007,
+    "kind": "film",
+    "synopsis": "A silver miner turned oilman builds an empire while his soul corrodes. Daniel Day-Lewis vs God.",
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "cast": [
+      "Daniel Day-Lewis",
+      "Paul Dano"
+    ],
+    "director": "Paul Thomas Anderson",
+    "rating": 8.2,
+    "poster_url": "https://image.tmdb.org/t/p/w500/fa0RDkAlCec0STeMNAhPaF89q6U.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1509909756405-be0199881695?w=1400&q=80",
+    "dna": {
+      "pacing": 0.3,
+      "tension_curve": [
+        0.2,
+        0.38,
+        0.55,
+        0.7,
+        0.82,
+        0.9
+      ],
+      "visual_style": "epic american realist",
+      "audio_mood": "strings industrial",
+      "thematic_tags": [
+        "capitalism",
+        "oil",
+        "religion",
+        "greed",
+        "California"
+      ],
+      "runtime_min": 158
+    }
+  },
+  {
+    "id": "devs-2020",
+    "title": "Devs",
+    "year": 2020,
+    "kind": "limited",
+    "synopsis": "A software engineer investigates the secretive development division of her employer, a leading tech company in Silicon Valley.",
+    "genres": [
+      "Sci-Fi",
+      "Thriller",
+      "Drama"
+    ],
+    "cast": [
+      "Sonoya Mizuno",
+      "Nick Offerman",
+      "Jin Ha"
+    ],
+    "director": "Alex Garland",
+    "rating": 7.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/rkNpMFHNJTG6MfplcJwvl8YAcnD.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80",
+    "dna": {
+      "pacing": 0.35,
+      "tension_curve": [
+        0.2,
+        0.38,
+        0.55,
+        0.68,
+        0.8,
+        0.85
+      ],
+      "visual_style": "silicon valley surreal",
+      "audio_mood": "choral electronic",
+      "thematic_tags": [
+        "determinism",
+        "quantum computing",
+        "grief",
+        "surveillance",
+        "free will"
+      ],
+      "runtime_min": 55
+    }
+  },
+  {
+    "id": "the-peripheral-s1-2022",
+    "title": "The Peripheral",
+    "year": 2022,
+    "kind": "series",
+    "synopsis": "A woman living in rural future America discovers a way to connect to a London in the far future.",
+    "genres": [
+      "Sci-Fi",
+      "Thriller",
+      "Drama"
+    ],
+    "cast": [
+      "Chloe Grace Moretz",
+      "Gary Carr",
+      "Jack Reynor"
+    ],
+    "director": "Scott B. Smith",
+    "rating": 7.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/jZhiCACFGJNwlv7MPcBTD7uGrNK.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1400&q=80",
+    "dna": {
+      "pacing": 0.65,
+      "tension_curve": [
+        0.3,
+        0.52,
+        0.68,
+        0.8,
+        0.88,
+        0.9
+      ],
+      "visual_style": "dystopian dual timeline",
+      "audio_mood": "electronic futuristic",
+      "thematic_tags": [
+        "time travel",
+        "rural America",
+        "future",
+        "corporate dystopia",
+        "William Gibson"
+      ],
+      "runtime_min": 55
+    }
+  },
+  {
+    "id": "i-may-destroy-you-2020",
+    "title": "I May Destroy You",
+    "year": 2020,
+    "kind": "limited",
+    "synopsis": "A writer in London navigates life after an assault. The most honest piece of television about consent ever made.",
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "cast": [
+      "Michaela Coel",
+      "Weruche Opia",
+      "Paapa Essiedu"
+    ],
+    "director": "Michaela Coel",
+    "rating": 8.5,
+    "poster_url": "https://image.tmdb.org/t/p/w500/5cFPbBzg4jRQfzPMHOmptH5P3gR.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1400&q=80",
+    "dna": {
+      "pacing": 0.55,
+      "tension_curve": [
+        0.3,
+        0.48,
+        0.62,
+        0.72,
+        0.8,
+        0.82
+      ],
+      "visual_style": "london naturalistic",
+      "audio_mood": "r and b sparse",
+      "thematic_tags": [
+        "consent",
+        "assault",
+        "Black London",
+        "friendship",
+        "writing"
+      ],
+      "runtime_min": 30
+    }
+  },
+  {
+    "id": "what-we-do-shadows-s1-2019",
+    "title": "What We Do in the Shadows",
+    "year": 2019,
+    "kind": "series",
+    "synopsis": "A mockumentary about vampire roommates in Staten Island navigating modern life.",
+    "genres": [
+      "Comedy",
+      "Horror",
+      "Fantasy"
+    ],
+    "cast": [
+      "Kayvan Novak",
+      "Matt Berry",
+      "Natasia Demetriou"
+    ],
+    "director": "Jemaine Clement",
+    "rating": 8.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/k7QBKBFgdVQbAHQKIYLYNJT1bYK.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=1400&q=80",
+    "dna": {
+      "pacing": 0.62,
+      "tension_curve": [
+        0.25,
+        0.4,
+        0.52,
+        0.6,
+        0.65,
+        0.68
+      ],
+      "visual_style": "mockumentary gothic",
+      "audio_mood": "comic orchestral",
+      "thematic_tags": [
+        "vampires",
+        "Staten Island",
+        "mockumentary",
+        "friendship",
+        "immortality"
+      ],
+      "runtime_min": 24
+    }
+  },
+  {
+    "id": "abbott-elementary-s1-2021",
+    "title": "Abbott Elementary",
+    "year": 2021,
+    "kind": "series",
+    "synopsis": "A group of dedicated teachers navigate the underfunded Philadelphia public school system. The best network sitcom in a decade.",
+    "genres": [
+      "Comedy"
+    ],
+    "cast": [
+      "Quinta Brunson",
+      "Tyler James Williams",
+      "Janelle James"
+    ],
+    "director": "Quinta Brunson",
+    "rating": 8.2,
+    "poster_url": "https://image.tmdb.org/t/p/w500/cLHoD0XAqgb4ASmH4ylPMJMvKOi.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1400&q=80",
+    "dna": {
+      "pacing": 0.6,
+      "tension_curve": [
+        0.25,
+        0.38,
+        0.48,
+        0.55,
+        0.6,
+        0.63
+      ],
+      "visual_style": "mockumentary warm",
+      "audio_mood": "upbeat soul",
+      "thematic_tags": [
+        "teachers",
+        "Philadelphia",
+        "public schools",
+        "comedy",
+        "optimism"
+      ],
+      "runtime_min": 22
+    }
+  },
+  {
+    "id": "call-my-agent-s1-2015",
+    "title": "Call My Agent!",
+    "year": 2015,
+    "kind": "series",
+    "synopsis": "The staff of a Paris talent agency scramble to serve their demanding celebrity clients while navigating their own messy personal lives.",
+    "genres": [
+      "Comedy",
+      "Drama"
+    ],
+    "cast": [
+      "Camille Cottin",
+      "Thibault de Montalembert",
+      "Liliane Rovère"
+    ],
+    "director": "Dominique Besnehard",
+    "rating": 8.1,
+    "poster_url": "https://image.tmdb.org/t/p/w500/qDtmPOFMiBGhN5qRHJcjBvd7SxP.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=1400&q=80",
+    "dna": {
+      "pacing": 0.6,
+      "tension_curve": [
+        0.3,
+        0.45,
+        0.58,
+        0.68,
+        0.75,
+        0.78
+      ],
+      "visual_style": "parisian chic",
+      "audio_mood": "jazz french",
+      "thematic_tags": [
+        "show business",
+        "Paris",
+        "French cinema",
+        "chaos",
+        "celebrity"
+      ],
+      "runtime_min": 52
+    }
+  },
+  {
+    "id": "babylon-berlin-s1-2017",
+    "title": "Babylon Berlin",
+    "year": 2017,
+    "kind": "series",
+    "synopsis": "A police detective navigates the seedy underworld of 1920s Berlin as the Weimar Republic teeters on the edge of collapse.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "History"
+    ],
+    "cast": [
+      "Volker Bruch",
+      "Liv Lisa Fries"
+    ],
+    "director": "Tom Tykwer",
+    "rating": 8.2,
+    "poster_url": "https://image.tmdb.org/t/p/w500/9UjmO0Kgs90Tp10DXcirAnOPGkx.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1528560933562-61e7f37a3a4e?w=1400&q=80",
+    "dna": {
+      "pacing": 0.55,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.65,
+        0.76,
+        0.86,
+        0.9
+      ],
+      "visual_style": "1920s decadent",
+      "audio_mood": "jazz cabaret dark",
+      "thematic_tags": [
+        "Weimar Republic",
+        "Berlin",
+        "rise of fascism",
+        "decadence",
+        "1920s"
+      ],
+      "runtime_min": 45
+    }
+  },
+  {
+    "id": "extraordinary-attorney-woo-2022",
+    "title": "Extraordinary Attorney Woo",
+    "year": 2022,
+    "kind": "series",
+    "synopsis": "A brilliant attorney with autism navigates the legal world in South Korea. Charming, warm, and genuinely moving.",
+    "genres": [
+      "Drama",
+      "Comedy",
+      "Romance"
+    ],
+    "cast": [
+      "Park Eun-bin",
+      "Kang Tae-oh",
+      "Kang Ki-young"
+    ],
+    "director": "Yoo In-shik",
+    "rating": 8.2,
+    "poster_url": "https://image.tmdb.org/t/p/w500/e7TIVlmCLFMHiQm8ziA4qzNIEaD.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1400&q=80",
+    "dna": {
+      "pacing": 0.48,
+      "tension_curve": [
+        0.25,
+        0.4,
+        0.55,
+        0.65,
+        0.72,
+        0.75
+      ],
+      "visual_style": "warm korean drama",
+      "audio_mood": "light orchestral",
+      "thematic_tags": [
+        "autism",
+        "law",
+        "Korea",
+        "whales",
+        "romance"
+      ],
+      "runtime_min": 64
+    }
+  },
+  {
+    "id": "dark-waters-2019",
+    "title": "Dark Waters",
+    "year": 2019,
+    "kind": "film",
+    "synopsis": "A corporate defense attorney uncovers a dark secret his biggest client — DuPont — has buried for decades.",
+    "genres": [
+      "Drama",
+      "History",
+      "Thriller"
+    ],
+    "cast": [
+      "Mark Ruffalo",
+      "Anne Hathaway",
+      "Tim Robbins"
+    ],
+    "director": "Todd Haynes",
+    "rating": 7.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/aOCuNDEhifC1IlxRA3A4qnXxX5d.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1400&q=80",
+    "dna": {
+      "pacing": 0.42,
+      "tension_curve": [
+        0.2,
+        0.38,
+        0.55,
+        0.68,
+        0.78,
+        0.82
+      ],
+      "visual_style": "legal thriller muted",
+      "audio_mood": "industrial slow",
+      "thematic_tags": [
+        "corporate crime",
+        "PFAS",
+        "DuPont",
+        "environmental",
+        "whistleblower"
+      ],
+      "runtime_min": 126
+    }
+  },
+  {
+    "id": "normal-people-2020",
+    "title": "Normal People",
+    "year": 2020,
+    "kind": "limited",
+    "synopsis": "The complex relationship between two Irish teenagers from very different backgrounds across several years.",
+    "genres": [
+      "Drama",
+      "Romance"
+    ],
+    "cast": [
+      "Daisy Edgar-Jones",
+      "Paul Mescal"
+    ],
+    "director": "Lenny Abrahamson",
+    "rating": 8.2,
+    "poster_url": "https://image.tmdb.org/t/p/w500/yBhzSPDnBqXKEFJECuQsX7PX1UX.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1400&q=80",
+    "dna": {
+      "pacing": 0.35,
+      "tension_curve": [
+        0.2,
+        0.35,
+        0.5,
+        0.6,
+        0.68,
+        0.72
+      ],
+      "visual_style": "intimate handheld irish",
+      "audio_mood": "indie tender",
+      "thematic_tags": [
+        "class",
+        "Ireland",
+        "first love",
+        "communication",
+        "bodies"
+      ],
+      "runtime_min": 30
+    }
+  },
+  {
+    "id": "the-crown-s1-2016",
+    "title": "The Crown",
+    "year": 2016,
+    "kind": "series",
+    "synopsis": "The inside story of two of the most famous addresses in the world — Buckingham Palace and 10 Downing Street.",
+    "genres": [
+      "Drama",
+      "History"
+    ],
+    "cast": [
+      "Claire Foy",
+      "Matt Smith",
+      "John Lithgow"
+    ],
+    "director": "Peter Morgan",
+    "rating": 8.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/ywBINHnHDGLIolJ1hE57RXwP8xv.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1400&q=80",
+    "dna": {
+      "pacing": 0.38,
+      "tension_curve": [
+        0.25,
+        0.4,
+        0.52,
+        0.62,
+        0.7,
+        0.75
+      ],
+      "visual_style": "opulent british",
+      "audio_mood": "orchestral stately",
+      "thematic_tags": [
+        "monarchy",
+        "duty",
+        "Britain",
+        "power",
+        "sacrifice"
+      ],
+      "runtime_min": 58
+    }
+  },
+  {
+    "id": "twin-peaks-1990",
+    "title": "Twin Peaks",
+    "year": 1990,
+    "kind": "series",
+    "synopsis": "FBI agent Dale Cooper investigates the murder of homecoming queen Laura Palmer in a quirky Pacific Northwest town.",
+    "genres": [
+      "Mystery",
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Kyle MacLachlan",
+      "Mädchen Amick",
+      "Sheryl Lee"
+    ],
+    "director": "David Lynch",
+    "rating": 8.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/esK8ypnTCpJEfj1bOdNDVOKSR1K.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1400&q=80",
+    "dna": {
+      "pacing": 0.38,
+      "tension_curve": [
+        0.3,
+        0.48,
+        0.62,
+        0.72,
+        0.82,
+        0.88
+      ],
+      "visual_style": "pacific northwest surreal",
+      "audio_mood": "jazz eerie",
+      "thematic_tags": [
+        "surrealism",
+        "murder mystery",
+        "Lynch",
+        "Pacific Northwest",
+        "evil"
+      ],
+      "runtime_min": 47
+    }
+  },
+  {
+    "id": "saltburn-2023",
+    "title": "Saltburn",
+    "year": 2023,
+    "kind": "film",
+    "synopsis": "A student becomes fascinated with a charming classmate and is invited to his family's estate for the summer.",
+    "genres": [
+      "Thriller",
+      "Drama"
+    ],
+    "cast": [
+      "Barry Keoghan",
+      "Jacob Elordi",
+      "Rosamund Pike"
+    ],
+    "director": "Emerald Fennell",
+    "rating": 7.1,
+    "poster_url": "https://image.tmdb.org/t/p/w500/qitIZFAzRpRPOHSKiSxOpkfBDVj.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1504701954957-2010ec3bcec1?w=1400&q=80",
+    "dna": {
+      "pacing": 0.5,
+      "tension_curve": [
+        0.2,
+        0.38,
+        0.58,
+        0.75,
+        0.88,
+        0.95
+      ],
+      "visual_style": "aristocratic gothic",
+      "audio_mood": "pop baroque unsettling",
+      "thematic_tags": [
+        "class",
+        "obsession",
+        "English aristocracy",
+        "desire",
+        "darkness"
+      ],
+      "runtime_min": 127
+    }
+  },
+  {
+    "id": "birdman-2014",
+    "title": "Birdman",
+    "year": 2014,
+    "kind": "film",
+    "synopsis": "A faded superhero actor attempts to mount a Broadway comeback. Shot to appear as one continuous take.",
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "cast": [
+      "Michael Keaton",
+      "Edward Norton",
+      "Emma Stone"
+    ],
+    "director": "Alejandro González Iñárritu",
+    "rating": 7.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/lHjRMBxKKFPr0kJl7DRZXaQ9Rm3.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1478760329108-5c3ed9d495a0?w=1400&q=80",
+    "dna": {
+      "pacing": 0.72,
+      "tension_curve": [
+        0.35,
+        0.55,
+        0.7,
+        0.82,
+        0.9,
+        0.88
+      ],
+      "visual_style": "continuous take jazz",
+      "audio_mood": "jazz drums frenetic",
+      "thematic_tags": [
+        "ego",
+        "legacy",
+        "Broadway",
+        "superheroes",
+        "madness"
+      ],
+      "runtime_min": 119
+    }
+  },
+  {
+    "id": "pain-and-glory-2019",
+    "title": "Pain and Glory",
+    "year": 2019,
+    "kind": "film",
+    "synopsis": "A film director reflects on the choices he's made in life as he seeks to reignite his creative spark.",
+    "genres": [
+      "Drama"
+    ],
+    "cast": [
+      "Antonio Banderas",
+      "Penélope Cruz",
+      "Asier Etxeandia"
+    ],
+    "director": "Pedro Almodóvar",
+    "rating": 7.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/vZloFIVG5KQeGKHLYsH65oAFvqP.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1400&q=80",
+    "dna": {
+      "pacing": 0.25,
+      "tension_curve": [
+        0.15,
+        0.25,
+        0.38,
+        0.48,
+        0.55,
+        0.58
+      ],
+      "visual_style": "warm mediterranean",
+      "audio_mood": "melancholic spanish",
+      "thematic_tags": [
+        "memory",
+        "filmmaking",
+        "Spain",
+        "addiction",
+        "mother"
+      ],
+      "runtime_min": 113
+    }
+  },
+  {
+    "id": "portrait-lady-on-fire-2019",
+    "title": "Portrait of a Lady on Fire",
+    "year": 2019,
+    "kind": "film",
+    "synopsis": "A female painter is commissioned to paint a wedding portrait of a young woman on a remote island in 18th-century Brittany.",
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "cast": [
+      "Noémie Merlant",
+      "Adèle Haenel"
+    ],
+    "director": "Céline Sciamma",
+    "rating": 8.1,
+    "poster_url": "https://image.tmdb.org/t/p/w500/3l3IbMbpRHqHiHGdaJ7kcYpuCLH.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=80",
+    "dna": {
+      "pacing": 0.2,
+      "tension_curve": [
+        0.1,
+        0.2,
+        0.32,
+        0.45,
+        0.58,
+        0.65
+      ],
+      "visual_style": "painterly 18th century",
+      "audio_mood": "chamber sparse",
+      "thematic_tags": [
+        "forbidden love",
+        "art",
+        "18th century",
+        "France",
+        "female gaze"
+      ],
+      "runtime_min": 122
+    }
+  },
+  {
+    "id": "la-la-land-2016",
+    "title": "La La Land",
+    "year": 2016,
+    "kind": "film",
+    "synopsis": "A jazz pianist and an aspiring actress fall in love while chasing their dreams in Los Angeles.",
+    "genres": [
+      "Romance",
+      "Drama",
+      "Music"
+    ],
+    "cast": [
+      "Ryan Gosling",
+      "Emma Stone",
+      "John Legend"
+    ],
+    "director": "Damien Chazelle",
+    "rating": 8.0,
+    "poster_url": "https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?w=1400&q=80",
+    "dna": {
+      "pacing": 0.5,
+      "tension_curve": [
+        0.2,
+        0.38,
+        0.52,
+        0.6,
+        0.68,
+        0.72
+      ],
+      "visual_style": "technicolor hollywood",
+      "audio_mood": "jazz musical",
+      "thematic_tags": [
+        "LA",
+        "jazz",
+        "dreams",
+        "ambition",
+        "bittersweet romance"
+      ],
+      "runtime_min": 128
+    }
+  },
+  {
+    "id": "blade-runner-2049",
+    "title": "Blade Runner 2049",
+    "year": 2017,
+    "kind": "film",
+    "synopsis": "A young blade runner discovers a long-buried secret, leading him to track down former blade runner Rick Deckard.",
+    "genres": [
+      "Sci-Fi",
+      "Drama",
+      "Thriller"
+    ],
+    "cast": [
+      "Ryan Gosling",
+      "Harrison Ford"
+    ],
+    "director": "",
+    "rating": 8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1400&q=80",
+    "dna": {
+      "pacing": 0.28,
+      "tension_curve": [
+        0.2,
+        0.3,
+        0.4,
+        0.55,
+        0.7,
+        0.8
+      ],
+      "visual_style": "neo noir cinematic",
+      "audio_mood": "melancholic atmospheric",
+      "thematic_tags": [
+        "AI consciousness",
+        "identity",
+        "memory"
+      ],
+      "runtime_min": 164
+    }
+  },
+  {
+    "id": "dark-s1-2017",
+    "title": "Dark",
+    "year": 2017,
+    "kind": "series",
+    "synopsis": "A mystery spanning four generations in a German town. Time, family, and apocalypse intertwined.",
+    "genres": [
+      "Sci-Fi",
+      "Mystery",
+      "Thriller"
+    ],
+    "cast": [
+      "Louis Hofmann",
+      "Oliver Masucci"
+    ],
+    "director": "",
+    "rating": 8.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/apbrbWs8M9lyOpJYU5WXrpFbk1Z.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?w=1400&q=80",
+    "dna": {
+      "pacing": 0.4,
+      "tension_curve": [
+        0.25,
+        0.45,
+        0.6,
+        0.75,
+        0.85,
+        0.9
+      ],
+      "visual_style": "dark european",
+      "audio_mood": "eerie atmospheric",
+      "thematic_tags": [
+        "time travel",
+        "determinism",
+        "cycles"
+      ],
+      "runtime_min": 52
+    }
+  },
+  {
+    "id": "dune-part-two-2024",
+    "title": "Dune: Part Two",
+    "year": 2024,
+    "kind": "film",
+    "synopsis": "Paul Atreides unites with the Fremen and seeks revenge against the conspirators who destroyed his family.",
+    "genres": [
+      "Sci-Fi",
+      "Adventure",
+      "Drama"
+    ],
+    "cast": [
+      "Timothée Chalamet",
+      "Zendaya"
+    ],
+    "director": "",
+    "rating": 8.5,
+    "poster_url": "https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1400&q=80",
+    "dna": {
+      "pacing": 0.65,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.7,
+        0.8,
+        0.9,
+        0.95
+      ],
+      "visual_style": "epic cinematic",
+      "audio_mood": "grand ominous",
+      "thematic_tags": [
+        "prophecy",
+        "colonialism",
+        "ecology"
+      ],
+      "runtime_min": 167
+    }
+  },
+  {
+    "id": "oppenheimer-2023",
+    "title": "Oppenheimer",
+    "year": 2023,
+    "kind": "film",
+    "synopsis": "The story of J. Robert Oppenheimer and his role in the development of the atomic bomb.",
+    "genres": [
+      "Drama",
+      "History",
+      "Thriller"
+    ],
+    "cast": [
+      "Cillian Murphy",
+      "Emily Blunt",
+      "Matt Damon"
+    ],
+    "director": "",
+    "rating": 8.9,
+    "poster_url": "https://image.tmdb.org/t/p/w500/8Gxv8gSFCU0XGDykEGv7zR1n2ua.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=1400&q=80",
+    "dna": {
+      "pacing": 0.62,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.6,
+        0.75,
+        0.9,
+        0.8
+      ],
+      "visual_style": "epic prestige",
+      "audio_mood": "intense cerebral",
+      "thematic_tags": [
+        "nuclear age",
+        "moral responsibility",
+        "genius",
+        "Cold War"
+      ],
+      "runtime_min": 180
+    }
+  },
+  {
+    "id": "parasite-2019",
+    "title": "Parasite",
+    "year": 2019,
+    "kind": "film",
+    "synopsis": "A poor family schemes to become employed by a wealthy family by infiltrating their household.",
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Comedy"
+    ],
+    "cast": [
+      "Song Kang-ho",
+      "Choi Woo-shik"
+    ],
+    "director": "",
+    "rating": 8.5,
+    "poster_url": "https://image.tmdb.org/t/p/w500/7IiTTgloJzvGI1TAYymCfbfl3vT.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1400&q=80",
+    "dna": {
+      "pacing": 0.72,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.6,
+        0.8,
+        0.95,
+        0.9
+      ],
+      "visual_style": "precise geometric",
+      "audio_mood": "playful to terrifying",
+      "thematic_tags": [
+        "class inequality",
+        "deception",
+        "survival",
+        "Korean society"
+      ],
+      "runtime_min": 132
+    }
+  },
+  {
+    "id": "severance-s1-2022",
+    "title": "Severance",
+    "year": 2022,
+    "kind": "series",
+    "synopsis": "A team of office workers have their memories surgically divided between work and personal lives.",
+    "genres": [
+      "Sci-Fi",
+      "Thriller",
+      "Drama"
+    ],
+    "cast": [
+      "Adam Scott",
+      "Patricia Arquette",
+      "John Turturro"
+    ],
+    "director": "",
+    "rating": 8.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/b6tsr7PFYK9LKA7q7UjOlFOkwLQ.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1518770660439-4636190af475?w=1400&q=80",
+    "dna": {
+      "pacing": 0.45,
+      "tension_curve": [
+        0.2,
+        0.35,
+        0.6,
+        0.75,
+        0.9,
+        0.95
+      ],
+      "visual_style": "sterile geometric",
+      "audio_mood": "unnerving",
+      "thematic_tags": [
+        "identity",
+        "corporate dystopia",
+        "memory"
+      ],
+      "runtime_min": 50
+    }
+  },
+  {
+    "id": "shogun-2024",
+    "title": "Shōgun",
+    "year": 2024,
+    "kind": "limited",
+    "synopsis": "Feudal Japan. A European sailor. A lord seeking power. Possibly the best prestige TV of 2024.",
+    "genres": [
+      "Drama",
+      "History",
+      "Action"
+    ],
+    "cast": [
+      "Hiroyuki Sanada",
+      "Cosmo Jarvis"
+    ],
+    "director": "",
+    "rating": 8.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/7O4iVfOMQmdCSxhOg1WnzG1AgYT.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1400&q=80",
+    "dna": {
+      "pacing": 0.48,
+      "tension_curve": [
+        0.25,
+        0.45,
+        0.6,
+        0.75,
+        0.85,
+        0.9
+      ],
+      "visual_style": "epic period",
+      "audio_mood": "ceremonial tense",
+      "thematic_tags": [
+        "honor",
+        "war",
+        "culture clash"
+      ],
+      "runtime_min": 58
+    }
+  },
+  {
+    "id": "succession-s4-2023",
+    "title": "Succession",
+    "year": 2018,
+    "kind": "series",
+    "synopsis": "The Roy family controls the world's largest media empire. What they do to each other is worse than anything they do to outsiders.",
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "cast": [
+      "Brian Cox",
+      "Jeremy Strong",
+      "Sarah Snook"
+    ],
+    "director": "",
+    "rating": 8.9,
+    "poster_url": "https://image.tmdb.org/t/p/w500/e2X8g1RBKSNmFEOdnMxIMH4zwbF.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?w=1400&q=80",
+    "dna": {
+      "pacing": 0.55,
+      "tension_curve": [
+        0.4,
+        0.55,
+        0.65,
+        0.75,
+        0.85,
+        0.95
+      ],
+      "visual_style": "prestige naturalistic",
+      "audio_mood": "tense sardonic",
+      "thematic_tags": [
+        "power",
+        "betrayal",
+        "capitalism"
+      ],
+      "runtime_min": 58
+    }
+  },
+  {
+    "id": "the-bear-s1-2022",
+    "title": "The Bear",
+    "year": 2022,
+    "kind": "series",
+    "synopsis": "A rising chef returns to run his late brother's chaotic Chicago sandwich shop.",
+    "genres": [
+      "Drama",
+      "Comedy"
+    ],
+    "cast": [
+      "Jeremy Allen White",
+      "Ayo Edebiri"
+    ],
+    "director": "",
+    "rating": 8.7,
+    "poster_url": "https://image.tmdb.org/t/p/w500/sHFlbKS3WLqMnp9t2ghADIJFnuQ.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400&q=80",
+    "dna": {
+      "pacing": 0.88,
+      "tension_curve": [
+        0.5,
+        0.7,
+        0.8,
+        0.9,
+        0.95,
+        0.85
+      ],
+      "visual_style": "handheld naturalistic",
+      "audio_mood": "intense",
+      "thematic_tags": [
+        "grief",
+        "ambition",
+        "family"
+      ],
+      "runtime_min": 30
+    }
+  },
+  {
+    "id": "the-last-of-us-s1-2023",
+    "title": "The Last of Us",
+    "year": 2023,
+    "kind": "series",
+    "synopsis": "After a global catastrophe, a hardened survivor and a teenage girl make a dangerous journey across a post-apocalyptic America.",
+    "genres": [
+      "Drama",
+      "Sci-Fi",
+      "Horror"
+    ],
+    "cast": [
+      "Pedro Pascal",
+      "Bella Ramsey"
+    ],
+    "director": "",
+    "rating": 8.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?w=1400&q=80",
+    "dna": {
+      "pacing": 0.52,
+      "tension_curve": [
+        0.3,
+        0.55,
+        0.65,
+        0.75,
+        0.85,
+        0.9
+      ],
+      "visual_style": "naturalistic bleak",
+      "audio_mood": "melancholic haunting",
+      "thematic_tags": [
+        "survival",
+        "fatherhood",
+        "grief",
+        "humanity"
+      ],
+      "runtime_min": 55
+    }
+  },
+  {
+    "id": "inception-2010",
+    "title": "Inception",
+    "year": 2010,
+    "kind": "film",
+    "synopsis": "A thief who steals corporate secrets through dream-sharing technology is given the inverse task of planting an idea into a target's mind.",
+    "genres": [
+      "Sci-Fi",
+      "Action",
+      "Thriller"
+    ],
+    "cast": [
+      "Leonardo DiCaprio",
+      "Joseph Gordon-Levitt",
+      "Marion Cotillard"
+    ],
+    "director": "Christopher Nolan",
+    "rating": 8.8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=1400&q=80",
+    "dna": {
+      "pacing": 0.78,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.65,
+        0.8,
+        0.92,
+        0.95
+      ],
+      "visual_style": "layered architectural",
+      "audio_mood": "booming orchestral",
+      "thematic_tags": [
+        "dreams",
+        "memory",
+        "guilt",
+        "reality"
+      ],
+      "runtime_min": 148
+    }
+  },
+  {
+    "id": "past-lives-2023",
+    "title": "Past Lives",
+    "year": 2023,
+    "kind": "film",
+    "synopsis": "Two childhood friends reunite in New York two decades after being separated, confronting the lives they might have shared.",
+    "genres": [
+      "Romance",
+      "Drama"
+    ],
+    "cast": [
+      "Greta Lee",
+      "Teo Yoo",
+      "John Magaro"
+    ],
+    "director": "Celine Song",
+    "rating": 8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/k3waqVXSnvCZWfJYNtdamTgTtTA.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=80",
+    "dna": {
+      "pacing": 0.22,
+      "tension_curve": [
+        0.1,
+        0.2,
+        0.32,
+        0.45,
+        0.6,
+        0.7
+      ],
+      "visual_style": "tender naturalistic",
+      "audio_mood": "quiet aching",
+      "thematic_tags": [
+        "fate",
+        "immigration",
+        "longing",
+        "what if"
+      ],
+      "runtime_min": 106
+    }
+  },
+  {
+    "id": "the-menu-2022",
+    "title": "The Menu",
+    "year": 2022,
+    "kind": "film",
+    "synopsis": "A young couple travels to a remote island to eat at an exclusive restaurant where the chef has prepared a lavish, sinister menu.",
+    "genres": [
+      "Thriller",
+      "Horror",
+      "Comedy"
+    ],
+    "cast": [
+      "Ralph Fiennes",
+      "Anya Taylor-Joy",
+      "Nicholas Hoult"
+    ],
+    "director": "Mark Mylod",
+    "rating": 7.2,
+    "poster_url": "https://image.tmdb.org/t/p/w500/fU0EuMTI8q7lR5g6Xg6yT2vG3I.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80",
+    "dna": {
+      "pacing": 0.6,
+      "tension_curve": [
+        0.25,
+        0.45,
+        0.6,
+        0.78,
+        0.9,
+        0.95
+      ],
+      "visual_style": "sterile fine dining",
+      "audio_mood": "precise menacing",
+      "thematic_tags": [
+        "class",
+        "art",
+        "obsession",
+        "satire"
+      ],
+      "runtime_min": 107
+    }
+  },
+  {
+    "id": "house-of-dragon-s1-2022",
+    "title": "House of the Dragon",
+    "year": 2022,
+    "kind": "series",
+    "synopsis": "The Targaryen civil war for the Iron Throne, set two centuries before the events of Game of Thrones.",
+    "genres": [
+      "Fantasy",
+      "Drama",
+      "Action"
+    ],
+    "cast": [
+      "Paddy Considine",
+      "Emma D'Arcy",
+      "Matt Smith"
+    ],
+    "director": "Ryan Condal",
+    "rating": 8.4,
+    "poster_url": "https://image.tmdb.org/t/p/w500/z2yahl2uefxDCl0nogcRBstwruJ.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=1400&q=80",
+    "dna": {
+      "pacing": 0.5,
+      "tension_curve": [
+        0.3,
+        0.5,
+        0.65,
+        0.78,
+        0.88,
+        0.92
+      ],
+      "visual_style": "prestige epic fantasy",
+      "audio_mood": "grand ominous",
+      "thematic_tags": [
+        "succession",
+        "dynasty",
+        "betrayal",
+        "dragons"
+      ],
+      "runtime_min": 60
+    }
+  },
+  {
+    "id": "slow-horses-s1-2022",
+    "title": "Slow Horses",
+    "year": 2022,
+    "kind": "series",
+    "synopsis": "A team of disgraced MI5 agents working at a dumping-ground department navigate the espionage world's spy-versus-spy machinations.",
+    "genres": [
+      "Drama",
+      "Thriller",
+      "Comedy"
+    ],
+    "cast": [
+      "Gary Oldman",
+      "Jack Lowden",
+      "Kristin Scott Thomas"
+    ],
+    "director": "James Hawes",
+    "rating": 8.2,
+    "poster_url": "https://image.tmdb.org/t/p/w500/9Pe5qWlqXSnyQ8aThsdfg4O9oun.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1400&q=80",
+    "dna": {
+      "pacing": 0.55,
+      "tension_curve": [
+        0.3,
+        0.45,
+        0.6,
+        0.72,
+        0.82,
+        0.88
+      ],
+      "visual_style": "grimy british noir",
+      "audio_mood": "wry tense",
+      "thematic_tags": [
+        "espionage",
+        "failure",
+        "institutions",
+        "redemption"
+      ],
+      "runtime_min": 45
+    }
+  },
+  {
+    "id": "station-eleven-2021",
+    "title": "Station Eleven",
+    "year": 2021,
+    "kind": "limited",
+    "synopsis": "Survivors of a devastating flu pandemic attempt to rebuild and preserve culture, following a traveling troupe of actors and musicians.",
+    "genres": [
+      "Drama",
+      "Sci-Fi"
+    ],
+    "cast": [
+      "Mackenzie Davis",
+      "Himesh Patel",
+      "Matilda Lawler"
+    ],
+    "director": "Hiro Murai",
+    "rating": 8,
+    "poster_url": "https://image.tmdb.org/t/p/w500/aHmcd5pp5kQw29DApUNl8Mwq8sP.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1476357471311-43c0db9fb2b4?w=1400&q=80",
+    "dna": {
+      "pacing": 0.35,
+      "tension_curve": [
+        0.25,
+        0.4,
+        0.55,
+        0.68,
+        0.78,
+        0.82
+      ],
+      "visual_style": "lyrical post collapse",
+      "audio_mood": "melancholic hopeful",
+      "thematic_tags": [
+        "memory",
+        "art",
+        "survival",
+        "what we preserve"
+      ],
+      "runtime_min": 55
+    }
+  },
+  {
+    "id": "true-detective-s4-2024",
+    "title": "True Detective: Night Country",
+    "year": 2024,
+    "kind": "series",
+    "synopsis": "In the long winter night of Ennis, Alaska, two detectives investigate the disappearance of eight men at a research station.",
+    "genres": [
+      "Crime",
+      "Drama",
+      "Mystery"
+    ],
+    "cast": [
+      "Jodie Foster",
+      "Kali Reis",
+      "Finn Bennett"
+    ],
+    "director": "Issa López",
+    "rating": 7.6,
+    "poster_url": "https://image.tmdb.org/t/p/w500/2Bp9Jrgz1eFV9N6gKsP9k9aB0Vp.jpg",
+    "backdrop_url": "https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=1400&q=80",
+    "dna": {
+      "pacing": 0.4,
+      "tension_curve": [
+        0.3,
+        0.48,
+        0.62,
+        0.75,
+        0.85,
+        0.9
+      ],
+      "visual_style": "arctic noir",
+      "audio_mood": "eerie dread",
+      "thematic_tags": [
+        "isolation",
+        "spirituality",
+        "murder",
+        "cold"
+      ],
+      "runtime_min": 55
+    }
+  }
+];
+
+export default CATALOG;
