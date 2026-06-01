@@ -68,7 +68,7 @@ jobs:
 
   # ── Frontend ──────────────────────────────────────────────────────────
   frontend-build:
-    name: Frontend Build
+    name: Frontend Build & Test
     runs-on: ubuntu-latest
 
     steps:
@@ -82,7 +82,11 @@ jobs:
 
       - name: Install dependencies
         working-directory: frontend
-        run: npm ci --prefer-offline 2>/dev/null || npm install
+        run: npm ci
+
+      - name: Run tests
+        working-directory: frontend
+        run: npm test
 
       - name: Build
         working-directory: frontend
