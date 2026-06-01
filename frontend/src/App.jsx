@@ -77,7 +77,10 @@ function MainApp() {
       case 'browse':
         return <BrowsePage title="Browse All" subtitle="Complete catalog · 98 titles" items={MOCK_CONTENT} onCardClick={handleCardClick} onDNAClick={handleShowDNA} showGenreFilter />
       default:
-        return <HomePage items={MOCK_CONTENT} onCardClick={handleCardClick} onDNAClick={handleShowDNA} myListIds={myListIds} toggleMyList={toggleMyList} />
+        // Pass the active selection so the hero reflects whatever the user
+        // picked (via Ask Nexus, a card, or the proactive alert). Falls back
+        // to the default featured title when nothing is selected.
+        return <HomePage items={MOCK_CONTENT} selectedContent={selectedContent} onCardClick={handleCardClick} onDNAClick={handleShowDNA} myListIds={myListIds} toggleMyList={toggleMyList} />
     }
   }
 
@@ -93,7 +96,17 @@ function MainApp() {
 
       <main className="relative z-10">{renderPage()}</main>
 
-      <AskNexus isOpen={showAskNexus} onClose={() => setShowAskNexus(false)} onContentSelect={(item) => { setSelectedContent(item); setShowDNA(true); setShowAskNexus(false) }} allContent={MOCK_CONTENT} />
+      <AskNexus isOpen={showAskNexus} onClose={() => setShowAskNexus(false)} onContentSelect={(item) => {
+        // "Open it" means: surface the title on the main page, ready to watch.
+        // Select it (drives the hero via HomePage) and close the chat. We do
+        // NOT force the DNA modal here — that contradicted the "Opening X now"
+        // copy and was the source of the stale-hero confusion. Jump home so the
+        // hero is visible even if the user was on a sub-page.
+        setSelectedContent(item)
+        setShowDNA(false)
+        setCurrentPage('home')
+        setShowAskNexus(false)
+      }} allContent={MOCK_CONTENT} />
 
       {showProactive && currentPage === 'home' && (
         <ProactiveAlert recommendation={PROACTIVE_REC} onDismiss={() => setShowProactive(false)} onViewContent={() => { setSelectedContent(PROACTIVE_REC.content); setShowDNA(true); setShowProactive(false) }} />
@@ -110,8 +123,11 @@ function MainApp() {
   )
 }
 
-function HomePage({ items, onCardClick, onDNAClick }) {
-  const featured = items[2] // Blade Runner as hero
+function HomePage({ items, selectedContent, onCardClick, onDNAClick }) {
+  // The hero shows the active selection when one exists; otherwise the
+  // default featured title (items[2]). This is what binds an Ask Nexus
+  // "open it" action to the main page instead of leaving it on the default.
+  const featured = selectedContent || items[2]
   const aiCurated = items.slice(0, 8)
   const slowBurn  = items.filter(c => (c.dna?.pacing||1) < 0.5)
   const highTension = items.filter(c => (c.dna?.pacing||0) >= 0.7)

@@ -1,10 +1,20 @@
 import React from 'react'
 import { X, Brain, Eye, TrendingUp, Film, Sliders, Dna } from 'lucide-react'
+import { computeSignals, computeMatchScore } from '../lib/matchEngine.js'
 
 const ICON_MAP = { brain: Brain, eye: Eye, 'trending-up': TrendingUp, film: Film }
 
 export default function ExplainabilityPanel({ content, onClose, onViewDNA }) {
-  const signals = content?.signals || []
+  // Prefer precomputed signals if present; otherwise derive them from the
+  // title's DNA vs the user profile. This is what kills the old
+  // "91% / 0 active signals" fabricated fallback.
+  const signals = (content?.signals && content.signals.length > 0)
+    ? content.signals
+    : computeSignals(content)
+  const matchScore = content?.matchScore != null
+    ? content.matchScore
+    : computeMatchScore(content)
+  const matchPct = Math.round(matchScore * 100)
 
   return (
     <div className="fixed right-0 top-0 bottom-0 z-40 flex items-center">
@@ -50,14 +60,14 @@ export default function ExplainabilityPanel({ content, onClose, onViewDNA }) {
           <div className="flex items-center justify-between mb-1">
             <span className="text-nexus-subtext text-xs font-mono">NEXUS MATCH SCORE</span>
             <span className="font-display font-700 text-2xl text-nexus-cyan glow-cyan">
-              {signals.length > 0 ? Math.round(signals[0].weight * 100) : 91}%
+              {matchPct}%
             </span>
           </div>
           <div className="h-1.5 bg-nexus-border rounded-full overflow-hidden">
             <div
               className="h-full rounded-full transition-all duration-700"
               style={{
-                width: `${signals.length > 0 ? signals[0].weight * 100 : 91}%`,
+                width: `${matchPct}%`,
                 background: 'linear-gradient(90deg, #00d4ff, #00a3c4)',
               }}
             />
