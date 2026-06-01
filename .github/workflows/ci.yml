@@ -42,7 +42,6 @@ jobs:
           pytest tests/ -v \
             --cov=. \
             --cov-report=xml \
-            --cov-omit="tests/*,*/migrations/*" \
             -m "not requires_services"
 
       - name: Upload coverage

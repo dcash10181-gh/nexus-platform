@@ -1,0 +1,9 @@
+# Coverage configuration for the NEXUS API test suite.
+# pytest-cov reads this automatically, so the CI command needs only
+# `--cov=. --cov-report=xml` — the omit list lives here, not as a
+# (nonexistent) `--cov-omit` CLI flag.
+[run]
+omit =
+    tests/*
+    */migrations/*
+    .venv/*
