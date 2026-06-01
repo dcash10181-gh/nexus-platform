@@ -10,8 +10,11 @@ export default function ProactiveAlert({ recommendation, onDismiss, onViewConten
     return () => clearTimeout(t)
   }, [])
 
+  // Bottom-RIGHT, not left: the hero's Watch Now / Content DNA buttons live at
+  // bottom-left, and a left-anchored toast overlapped that primary CTA.
+  // Right-anchored is also the conventional spot for an agent nudge.
   return (
-    <div className={`fixed bottom-6 left-6 z-50 max-w-sm transition-all duration-500 ${
+    <div className={`fixed bottom-6 right-6 z-50 max-w-sm transition-all duration-500 ${
       visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
     }`}>
       <div className="bg-nexus-surface border border-nexus-border rounded-2xl shadow-2xl overflow-hidden

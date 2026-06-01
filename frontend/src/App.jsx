@@ -12,7 +12,18 @@ import BrowsePage from './pages/BrowsePage.jsx'
 import ImpactDashboard from './pages/ImpactDashboard.jsx'
 import AdminDashboard from './pages/AdminDashboard.jsx'
 
-const PROACTIVE_REC = { title:'Perfect for tonight', content:MOCK_CONTENT[0], reasoning:"It's Friday evening. Severance matches your slow-burn psychological pattern exactly.", push_notification:{ body:"Severance is calling your name tonight ✦" } }
+// Proactive recommendation. Anchored to a single real catalog title looked up
+// by id (NOT a positional index — index drift was how the copy and content got
+// out of sync: the text said "Severance" while content was MOCK_CONTENT[0] = The
+// Wire). Copy is written to match THIS title's actual DNA (Mindhunter is a
+// genuine slow-burn psychological thriller), so the card never lies.
+const PROACTIVE_TITLE = MOCK_CONTENT.find(c => c.id === 'mindhunter-s1-2017') || MOCK_CONTENT[0]
+const PROACTIVE_REC = {
+  title: 'Perfect for tonight',
+  content: PROACTIVE_TITLE,
+  reasoning: `It's Friday evening. ${PROACTIVE_TITLE.title} matches your slow-burn psychological pattern exactly.`,
+  push_notification: { body: `${PROACTIVE_TITLE.title} is calling your name tonight ✦` },
+}
 
 // Saved list state (persisted in sessionStorage for demo)
 function getMyList() {
@@ -109,7 +120,13 @@ function MainApp() {
       }} allContent={MOCK_CONTENT} />
 
       {showProactive && currentPage === 'home' && (
-        <ProactiveAlert recommendation={PROACTIVE_REC} onDismiss={() => setShowProactive(false)} onViewContent={() => { setSelectedContent(PROACTIVE_REC.content); setShowDNA(true); setShowProactive(false) }} />
+        <ProactiveAlert recommendation={PROACTIVE_REC} onDismiss={() => setShowProactive(false)} onViewContent={() => {
+          // "Watch now" = land on the title's hero, consistent with Ask Nexus
+          // "open it". Don't force the DNA modal (the button doesn't say "DNA").
+          setSelectedContent(PROACTIVE_REC.content)
+          setShowDNA(false)
+          setShowProactive(false)
+        }} />
       )}
 
       {selectedContent && showDNA && (
