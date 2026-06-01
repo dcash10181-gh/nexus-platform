@@ -1,180 +1,134 @@
-# NEXUS — AI-Native Video & Content Orchestration Platform
+# NEXUS — Conversational AI for Video Discovery
 
-> *Production-ready AI recommendation, conversational discovery, and agentic personalization for streaming platforms.*
+A solo-built, production-shaped recommendation and conversational-discovery system for video catalogs. Natural-language discovery ("something like *Inception* for a rainy night"), explainable recommendations, and a pluggable LLM layer — running locally with one command, no API keys required.
 
-[![License: Commercial](https://img.shields.io/badge/License-Commercial-blue.svg)](./LICENSE)
-[![Docker](https://img.shields.io/badge/Deploy-Docker-cyan.svg)](./docker-compose.yml)
 [![Python 3.12](https://img.shields.io/badge/Python-3.12-green.svg)](./api)
 [![React 18](https://img.shields.io/badge/React-18-blueviolet.svg)](./frontend)
-[![Tests](https://img.shields.io/badge/Tests-55%2F55-brightgreen.svg)](./api/tests)
+[![Tests](https://img.shields.io/badge/Tests-55%2F55_passing-brightgreen.svg)](./api/tests)
+[![Docker](https://img.shields.io/badge/Run-one_command-cyan.svg)](#run-it)
+
+> **What this is:** a personal engineering project exploring how LLMs, vector search, and a knowledge graph combine into a conversational recommendation system — the problem space Netflix, Spotify, and Amazon staff entire research teams against. Built end-to-end (backend, frontend, infra, tests) by one person to demonstrate that.
 
 ---
 
-## Quick Start
+## Why this project exists
 
-**Requirements:** [Docker Desktop](https://docs.docker.com/get-docker/) — nothing else.
+Content discovery is the core retention problem for any streaming catalog: the titles that dominate conversation draw a small fraction of traffic, and everything else needs to be *discovered*. The interesting engineering question is how to turn a vague human intent — "something tense but not violent, like early *True Detective*" — into a ranked, explainable set of results.
 
-### One-command install
+NEXUS is my exploration of that question, built as a complete system rather than a notebook:
+
+- A **conversational discovery** layer that parses free-form intent into structured preferences and grounds responses in the actual catalog.
+- A **multi-signal recommendation engine** (semantic similarity + graph relationships + session context) rather than a single embedding lookup.
+- An **explainability layer** that exposes *why* each title was surfaced — pacing, thematic overlap, completion patterns.
+- A **provider-agnostic LLM abstraction** so the intelligence layer is swappable (Claude / GPT / local Llama / a deterministic mock) via config, never code.
+
+---
+
+## Run it
+
+**Requires:** Docker Desktop. Nothing else.
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/dcash10181-gh/nexus-platform/main/install.sh | bash
 ```
 
-This clones the repo, starts all services, seeds the catalog, and opens the browser. No API keys required.
+This clones the repo, builds and starts the stack, seeds a 98-title catalog, and opens the app. First run takes ~2 minutes (image build + model download). It runs **entirely on your machine with no API keys** — the LLM layer defaults to a deterministic mock provider so the system is fully functional offline.
 
-### Manual install
+Then open **http://localhost:3000** · API docs at **http://localhost:8000/docs**
 
-```bash
-git clone https://github.com/dcash10181-gh/nexus-platform
-cd nexus-platform
-cp .env.example .env
-docker compose up -d
+To stop: `docker compose down`
+
+### Enabling real LLM inference (optional)
+
+The mock provider demonstrates the full flow deterministically. To use real inference, set one env var — no code changes:
+
+```env
+LLM_PROVIDER=openai
+OPENAI_API_KEY=...
+OPENAI_BASE_URL=https://api.groq.com/openai/v1   # or any OpenAI-compatible endpoint
+OPENAI_MODEL=llama-3.3-70b-versatile
 ```
-
-Open **http://localhost:3000**
-
-### To stop
-
-```bash
-docker compose down
-```
-
-### To enable real AI (optional)
-
-Edit `.env`:
-```
-LLM_PROVIDER=anthropic
-ANTHROPIC_API_KEY=sk-ant-...
-```
-Restart: `docker compose up -d`
 
 ---
 
-## What NEXUS Does
+## What's real vs. simulated
 
-NEXUS is a white-label AI recommendation and content discovery platform for video streaming companies. Five capabilities most streaming platforms don't offer:
+Being explicit, because it matters for reading the code honestly:
 
-| Capability | Description |
-|-----------|-------------|
-| **Conversational Discovery** | Multi-turn dialogue: "Something like Inception for a rainy evening" → curated results |
-| **Explainable Recommendations** | Per-card signal breakdown: "87% match — pacing, director affinity, completion history" |
-| **Proactive Agentic Push** | Background agent surfaces content before the user opens the app |
-| **Content DNA** | Fingerprint: tension curve, pacing score, visual style, audio mood, thematic tags |
-| **Pluggable LLM Intelligence** | Hot-swap Claude / GPT-4o / Llama via one `.env` change — no code required |
+| Component | Status |
+|-----------|--------|
+| Conversational intent parsing, orchestration, multi-turn session state | **Real** |
+| Multi-signal recommendation scoring (semantic + graph + context) | **Real** |
+| Vector search (Qdrant), knowledge graph (Neo4j) | **Real**, runs in the stack |
+| LLM provider abstraction (Claude / OpenAI-compatible / Ollama / Mock) | **Real**; mock is the zero-config default |
+| Catalog (98 titles, full metadata + "content DNA") | **Real**, curated/seeded |
+| User behavior, completion history, A/B metrics | **Simulated** — no real user base |
+| Licensing / multi-tenancy scaffolding | **Real code, illustrative** — not a deployed product |
+
+The mock LLM provider is a deliberate design choice, not a shortcut: the provider interface is the seam that makes the intelligence layer swappable, and a deterministic mock makes the system runnable offline and testable in CI without paid keys.
 
 ---
 
 ## Architecture
 
 ```
-┌─────────────────── NEXUS Platform ───────────────────────────┐
-│                                                               │
-│   ┌─────────────────────────────────────────────────────┐    │
-│   │  React Frontend  :3000                               │    │
-│   │  ┌──────────────┐  ┌─────────────┐  ┌────────────┐ │    │
-│   │  │  Ask NEXUS   │  │Explainability│  │Content DNA │ │    │
-│   │  │  (CRS Chat)  │  │   Panel      │  │  Modal     │ │    │
-│   │  └──────────────┘  └─────────────┘  └────────────┘ │    │
-│   └─────────────────────────────────────────────────────┘    │
-│                           │ HTTP                              │
-│   ┌─────────────────────────────────────────────────────┐    │
-│   │  FastAPI  :8000                                      │    │
-│   │  MCP Orchestrator — Claude │ GPT-4o │ Llama │ Mock  │    │
-│   │  Recommendation Engine (semantic + graph + context) │    │
-│   │  LangGraph Proactive Agent (4-node pipeline)        │    │
-│   └─────────────────────────────────────────────────────┘    │
-│              │                         │                      │
-│   ┌──────────────────┐    ┌────────────────────────────┐     │
-│   │  Qdrant  :6333   │    │  Neo4j  :7687              │     │
-│   │  Vector search   │    │  Knowledge graph           │     │
-│   └──────────────────┘    └────────────────────────────┘     │
-│                                                               │
-└───────────────────────────────────────────────────────────────┘
++------------------- NEXUS --------------------------------------+
+|  React Frontend  :3000                                         |
+|   Ask NEXUS (chat)  .  Explainability Panel  .  Content DNA    |
+|                          | HTTP                                |
+|  FastAPI  :8000                                                |
+|   LLM Orchestrator  -  Claude | OpenAI-compat | Llama | Mock   |
+|   Recommendation Engine  (semantic + graph + context)         |
+|   LangGraph proactive agent  (multi-node pipeline)            |
+|           |                              |                     |
+|  Qdrant :6333                    Neo4j :7687                   |
+|  Vector search                   Knowledge graph               |
++----------------------------------------------------------------+
+```
+
+**Stack:** FastAPI (Python 3.12), React 18 + Tailwind, Qdrant (vectors), Neo4j (graph), LangGraph (agent), Docker Compose. ~900 lines of core AI logic across the orchestrator, engine, providers, and agent; 55 tests passing in CI.
+
+---
+
+## Design decisions
+
+The non-obvious choices, with reasoning recorded as ADRs in [`docs/knowledge-base/`](./docs/knowledge-base):
+
+- **Provider-agnostic LLM layer over a hardcoded SDK call.** The orchestrator depends on an `LLMProvider` protocol; concrete backends (Anthropic, OpenAI-compatible, Ollama, Mock) are interchangeable via config. Swapping Claude to a free Groq endpoint is an env change. ([providers.py](./api/llm/providers.py))
+- **Multi-signal scoring, not a single embedding lookup.** Recommendations blend semantic similarity, knowledge-graph relationships, and session context, each contributing an explainable signal — which is what makes the "87% match because..." breakdown possible. ([engine.py](./api/recommendations/engine.py))
+- **Graceful degradation on startup.** The API boots and serves even if Qdrant or Neo4j are slow or unavailable — it warns rather than crashes — so a partial stack still demos. ([main.py](./api/main.py))
+- **Single source of truth for the catalog.** Defined once in the backend seed and exported to the frontend, after an incident where the frontend, the mock responses, and the graph edges had drifted to three different title sets. Write-up: [CATALOG_INTEGRITY.md](./docs/knowledge-base/CATALOG_INTEGRITY.md).
+
+---
+
+## Project structure
+
+```
+api/
+  main.py            App entrypoint, startup lifecycle
+  llm/               Provider-agnostic LLM orchestration
+  recommendations/   Multi-signal scoring engine
+  agents/            LangGraph proactive recommendation agent
+  catalog/           Qdrant + Neo4j + seeder
+  routers/           HTTP handlers
+  tests/             55 tests
+frontend/src/        React 18 + Tailwind components
+docs/knowledge-base/ Architecture decision records & runbooks
+docker-compose.yml   Self-contained stack
+install.sh           One-command installer
 ```
 
 ---
 
-## Core API Endpoints
+## Known limitations & next steps
 
-### Recommendations
-```http
-POST /v1/recommendations/
-Authorization: Bearer <api_key>
-{"user_id": "usr_123", "context": {"time_of_day": "evening"}, "limit": 24}
-```
+Honest about the gaps:
 
-### Conversational Discovery
-```http
-POST /v1/conversations/chat
-{"user_id": "usr_123", "message": "Something like Inception for a rainy Tuesday night"}
-```
-
-### Proactive Agent
-```http
-POST /v1/agents/proactive
-{"user_id": "usr_123"}
-```
-
-### Semantic Search
-```http
-GET /v1/search/?q=psychological+thriller+slow+burn
-```
-
-Full interactive docs at **http://localhost:8000/docs**
+- **No real user data**, so collaborative-filtering signals are simulated. The architecture supports it; the data doesn't exist.
+- **Mock LLM is the default.** Real inference works but isn't wired to a hosted demo (cost-constrained, solo).
+- **Conversational quality is bounded by the mock** unless a real provider is configured — the orchestration and grounding are real, the language generation is canned offline.
+- **Next:** swap the mock for a hosted free-tier model on a public demo URL; add fuzzy title matching to absorb speech-to-text drift; replace the in-memory session/key stores with Redis.
 
 ---
 
-## Configuration
-
-All settings in `.env` (copied from `.env.example` on install):
-
-```env
-# LLM — swap without code changes
-LLM_PROVIDER=mock              # mock | anthropic | openai | local
-ANTHROPIC_API_KEY=             # add key to enable Claude
-
-# Everything else works with defaults
-NEO4J_PASSWORD=nexus-dev-password
-NEXUS_LICENSE_KEY=trial
-```
-
----
-
-## Project Structure
-
-```
-nexus-platform/
-├── api/                     # FastAPI recommendation engine
-│   ├── main.py              # App entrypoint
-│   ├── config.py            # Settings
-│   ├── models.py            # Type contracts
-│   ├── catalog/             # Qdrant + Neo4j + seeder
-│   ├── recommendations/     # Multi-signal scoring engine
-│   ├── agents/              # Proactive recommendation agent
-│   ├── routers/             # HTTP route handlers
-│   ├── llm/                 # MCP-style LLM orchestration
-│   └── tests/               # 55 tests, all passing
-├── frontend/                # React 18 + Tailwind
-│   └── src/components/      # Navbar, HeroSection, AskNexus,
-│                            # ExplainabilityPanel, ContentDNAModal
-├── docker-compose.yml       # Full self-contained stack
-├── api/Dockerfile           # Production Dockerfile
-├── install.sh               # One-command installer
-└── .env.example             # Default configuration
-```
-
----
-
-## Licensing
-
-| Tier | Price | Users | Tenants |
-|------|-------|-------|---------|
-| **Trial** (default) | Free | 1,000 / 30 days | 1 |
-| **Commercial Annual** | $250K/year | Unlimited | 5 |
-| **Enterprise Perpetual** | $2.5M | Unlimited | Unlimited |
-
-See [`LICENSE`](./LICENSE) for full terms.
-
----
-
-*Built by Duane Cash*
+*Built by Duane Cash. This is a personal engineering project, not a commercial product.*
