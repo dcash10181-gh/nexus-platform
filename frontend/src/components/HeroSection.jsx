@@ -3,11 +3,19 @@ import { Play, Info, Star, Clock, Brain } from 'lucide-react'
 
 export default function HeroSection({ featured, onPlay, onInfo }) {
   const [loaded, setLoaded] = useState(false)
+  // Track backdrop load failure in React state rather than mutating the DOM
+  // (the old onError set e.target.style.display='none', which fights React and
+  // left a dead black panel behind it with no fallback). Reset when the
+  // featured title changes so a new title gets a fresh attempt.
+  const [bgFailed, setBgFailed] = useState(false)
 
   useEffect(() => {
     const t = setTimeout(() => setLoaded(true), 100)
     return () => clearTimeout(t)
   }, [])
+
+  // New title -> retry its backdrop.
+  useEffect(() => { setBgFailed(false) }, [featured?.id])
 
   const c = featured
   const dna = c?.dna || {}
@@ -17,14 +25,42 @@ export default function HeroSection({ featured, onPlay, onInfo }) {
     <section className="relative h-[88vh] min-h-[560px] overflow-hidden">
       {/* Backdrop */}
       <div className="absolute inset-0">
-        <img
-          src={c?.backdrop_url}
-          alt=""
-          className={`w-full h-full object-cover object-center transition-all duration-1000 ${
-            loaded ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
-          }`}
-          onError={e => { e.target.style.display = 'none' }}
+        {/* Base fallback layer — ALWAYS rendered, sits behind the image. A
+            title-tinted diagonal gradient so a missing/slow backdrop reads as
+            intentional design, never a dead black panel. */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'radial-gradient(120% 120% at 75% 20%, rgba(0,212,255,0.10) 0%, rgba(8,8,15,1) 55%), linear-gradient(135deg, #0d1424 0%, #08080f 60%)',
+          }}
         />
+
+        {/* If the backdrop failed but we have a poster, use it as a blurred,
+            dimmed fill so the hero still feels populated by the actual title. */}
+        {bgFailed && c?.poster_url && (
+          <img
+            src={c.poster_url}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 w-full h-full object-cover object-center opacity-30 blur-2xl scale-110"
+            onError={e => { e.currentTarget.style.display = 'none' }}
+          />
+        )}
+
+        {/* The real backdrop. Only rendered while it hasn't failed; on error we
+            flip state and let the fallback layers above show through. */}
+        {c?.backdrop_url && !bgFailed && (
+          <img
+            src={c.backdrop_url}
+            alt=""
+            className={`w-full h-full object-cover object-center transition-all duration-1000 ${
+              loaded ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
+            }`}
+            onError={() => setBgFailed(true)}
+          />
+        )}
+
         {/* Gradient overlays */}
         <div className="absolute inset-0"
           style={{ background: 'linear-gradient(to right, rgba(8,8,15,0.95) 30%, rgba(8,8,15,0.4) 60%, transparent 80%)' }} />
